@@ -1,39 +1,55 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
 
-Welcome Louie O Hagan,
+<h1 align="center">NNB Responsive E-Commerce Website Project</h1>
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project.
+Navigation Buttons
 
-## Gitpod Reminders
+Project Description
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Project Showcase
 
-`python3 -m http.server`
+## User Experience (UX)
 
-A blue button should appear to click: *Make Public*,
+- ### User stories
 
-Another blue button should appear to click: *Open Browser*.
+- ### Design
+    - #### Colour Scheme
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+    - #### Typography
 
-A blue button should appear to click: *Make Public*,
+    - #### Imagery
 
-Another blue button should appear to click: *Open Browser*.
+* ### Wireframes
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the backend lessons.
+## Features
 
-## Updates Since The Instructional Video
+### Current Pages & Features
 
-We continually tweak and adjust this template to help give you the best experience. Here are the updates since the original video was made:
+### To Do List
+#### MUST DO
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+#### IF HAVE TIME
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+###### Last Updated: 11:52am GMT - 19/04/20 
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+### Features Left to Implement
+##### These are features that have not been added at the time of development due to various reasons such as time limitations.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+## Database Schema
 
---------
+## Technologies Used
 
-Happy coding!
+### Languages Used
+
+### Frameworks, Libraries & Programs Used
+
+## Testing
+
+## Deployment
+
+## Credits
+
+### Code
+
+### Content
+
+### Acknowledgements
