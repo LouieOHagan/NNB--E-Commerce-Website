@@ -1,0 +1,46 @@
+.no-gutters {
+    padding: 0;
+}
+
+/* -------------------------------- Navigation Bar */
+.navigation-specs {
+    background: red;
+    margin: 0;
+    padding: 0;
+}
+
+.logo{
+    display: block;
+    background: url(../../media/logo-black.png) center no-repeat;
+    background-size: 5rem;
+    width: 5rem;
+    height: 3rem;
+    margin: 0 25px 0 0.625rem;
+}
+
+.navigation-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navigation-items {
+    list-style: none;
+}
+
+.center-list,
+.right-list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.center-items,
+.right-items {
+    margin: 10px 15px;
+}
+
+.center-items a,
+.right-items a {
+    color: #000;
+}
