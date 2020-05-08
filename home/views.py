@@ -1,5 +1,5 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse("Hello new app!")
+    return render(request, 'home/index.html')
