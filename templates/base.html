@@ -45,7 +45,6 @@
                             </div>
                         </li>
                         <hr>
-
                         <li class="center-items mobile-items">
                             <a href="">DESKTOPS</a>
                         </li>
@@ -66,32 +65,33 @@
                             <a href="">ACCESSORIES</a>
                         </li>
                         <hr>
-                        {% if request.user.is_authenticated %}
-                                {% if request.user.is_superuser %}
-                                    <li class="center-items mobile-items dropdown">
-                                        <a href="#">ADMIN PANEL</a>
-                                    </li>
-                                {% else %}
-                                    <li class="center-items mobile-items dropdown">
-                                        <a href="#">EDIT PROFILE</a>
-                                    </li>
-                                    <li class="center-items mobile-items dropdown">
-                                        <a href="#">SIGN OUT</a>
-                                    </li>
-                                {% endif %}
-                        {% else %}
+                        <div class="d-md-none d-block">
+                            {% if request.user.is_authenticated %}
+                                    {% if request.user.is_superuser %}
+                                        <li class="center-items mobile-items dropdown">
+                                            <a href="#">ADMIN PANEL</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="center-items mobile-items dropdown">
+                                            <a href="#">EDIT PROFILE</a>
+                                        </li>
+                                        <li class="center-items mobile-items dropdown">
+                                            <a href="#">SIGN OUT</a>
+                                        </li>
+                                    {% endif %}
+                            {% else %}
+                                <li class="center-items mobile-items dropdown">
+                                    <a href="#">LOGIN</a>
+                                </li>
+                                <li class="center-items mobile-items dropdown">
+                                    <a href="#">SIGN UP</a>
+                                </li>
+                            {% endif %}
+                            <hr>
                             <li class="center-items mobile-items dropdown">
-                                <a href="#">LOGIN</a>
+                                <a href="#">MY CART</a>
                             </li>
-                            <li class="center-items mobile-items dropdown">
-                                <a href="#">SIGN UP</a>
-                            </li>
-                        {% endif %}
-                        <hr>
-                        <li class="center-items mobile-items dropdown">
-                            <a href="#">MY CART</a>
-                        </li>
-
+                        </div>
                     </ul>
                 </div>
                 
