@@ -19,106 +19,120 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css">
-
+        <!-- Bootstrap Better Nav -->
+        <link rel="stylesheet" href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css" />
         <!-- Custom CSS -->
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
         {% endblock %} 
-
+        
         {% block extra_css %} {% endblock %}
     </head>
     <body>
-            <nav class="navbar navbar-expand-md navbar-light bg-light">
-                <a class="navbar-brand logo" href="{% url 'home' %}"></a>
-                <button class="navbar-toggler no-border" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon custom-icon"></span>
-                </button>
+        <nav class="navbar navbar-expand-md navigation-colour">
+            <a class="navbar-brand logo" href="{% url 'home' %}"></a>
+            <button class="navbar-toggler no-border" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon custom-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse navigation-sect" id="navbarNavDropdown">
-                    <ul class="nav-item center-list d-md-flex d-block">
-                        <li>
-                            <div class="mobile-search d-md-none d-block">
-                                <form>
-                                    <input type="text" name="search" placeholder="Search Products" />
-                                    <i type="submit" class="fas fa-search mobile-search-form-icon"></i>
-                                </form>
-                            </div>
-                        </li>
-                        <hr>
-                        <li class="center-items mobile-items">
-                            <a href="">DESKTOPS</a>
-                        </li>
+            <div class="collapse navbar-collapse navigation-sect" id="navbarNavDropdown">
+                <ul class="nav-item center-list d-md-flex d-block">
+                    <li>
+                        <div class="mobile-search d-md-none d-block">
+                            <form>
+                                <input type="text" name="search" placeholder="Search Products" />
+                                <i type="submit" class="fas fa-search mobile-search-form-icon"></i>
+                            </form>
+                        </div>
+                    </li>
+                    <hr />
+                    <li class="center-items">
+                        <a href="">DESKTOPS</a>
+                    </li>
 
-                        <li class="center-items mobile-items">
-                            <a href="">LAPTOPS</a>
-                        </li>
+                    <li class="center-items">
+                        <a href="">LAPTOPS</a>
+                    </li>
 
-                        <li class="center-items mobile-items">
-                            <a href="">MOBILES</a>
-                        </li>
+                    <li class="center-items">
+                        <a href="">MOBILES</a>
+                    </li>
 
-                        <li class="center-items mobile-items">
-                            <a href="">TABLETS</a>
-                        </li>
+                    <li class="center-items">
+                        <a href="">TABLETS</a>
+                    </li>
 
-                        <li class="center-items mobile-items">
-                            <a href="">ACCESSORIES</a>
-                        </li>
-                        <hr>
-                        <div class="d-md-none d-block">
-                            {% if request.user.is_authenticated %}
-                                    {% if request.user.is_superuser %}
-                                        <li class="center-items mobile-items dropdown">
-                                            <a href="#">ADMIN PANEL</a>
-                                        </li>
-                                    {% else %}
-                                        <li class="center-items mobile-items dropdown">
-                                            <a href="#">EDIT PROFILE</a>
-                                        </li>
-                                        <li class="center-items mobile-items dropdown">
-                                            <a href="#">SIGN OUT</a>
-                                        </li>
-                                    {% endif %}
-                            {% else %}
-                                <li class="center-items mobile-items dropdown">
-                                    <a href="#">LOGIN</a>
-                                </li>
-                                <li class="center-items mobile-items dropdown">
-                                    <a href="#">SIGN UP</a>
+                    <li class="center-items">
+                        <a href="">ACCESSORIES</a>
+                    </li>
+                    <hr />
+                    <div class="d-md-none d-block">
+                        {% if request.user.is_authenticated %} 
+                            {% if request.user.is_superuser %}
+                                <li class="center-items dropdown">
+                                    <a href="{% url 'admin:index' %}">ADMIN PANEL</a>
                                 </li>
                             {% endif %}
-                            <hr>
-                            <li class="center-items mobile-items dropdown">
-                                <a href="#">MY CART</a>
+                            <li class="center-items dropdown">
+                                <a href="#">EDIT PROFILE</a>
                             </li>
-                        </div>
-                    </ul>
-                </div>
-                
-                <ul class="right-list">
-                    <li class="right-items d-md-block d-none">
-                        <a href="#" id="search-btn"><i class="fas fa-search"></i></a>
-                    </li>
-                    <li class="right-items dropdown">
-                        <a href="#" id="profile-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt"></i></a>
-                        <div class="dropdown-menu new-dropdown" aria-labelledby="profile-dropdown">
-                            <a class="dropdown-item" href="#">Login</a>
-                            <a class="dropdown-item" href="#">Sign Up</a>
-                        </div>
-                    </li>
-                    <li class="dropdown right-items">
-                        <a href="#"><i class="fas fa-shopping-cart" ></i></a>
-                    </li>
+                            <li class="center-items dropdown">
+                                <a href="{% url 'account_logout' %}">SIGN OUT</a>
+                            </li>
+                        {% else %}
+                            <li class="center-items dropdown">
+                                <a href="{% url 'account_login' %}">LOGIN</a>
+                            </li>
+                            <li class="center-items dropdown">
+                                <a href="{% url 'account_signup' %}">SIGN UP</a>
+                            </li>
+                        {% endif %}
+                        <hr>
+                        <li class="center-items dropdown">
+                            <a href="#">MY CART</a>
+                        </li>
+                        <li class="center-items dropdown">
+                            <a href="#">MY WISHLIST</a>
+                        </li>
+                        <hr>
+                    </div>
                 </ul>
+            </div>
 
-                <div class="search-form d-md-block d-none">
-                    <form>
-                        <input class="search-box" type="text" name="search" placeholder="Search Products" />
-                        <i class="fas fa-search search-form-icon"></i>
-                    </form>
-                </div>
-                <a class="close-search" href="#"><i class="fa fa-times"></i></a>
-            </nav>
+            <ul class="right-list">
+                <li class="right-items d-md-block d-none">
+                    <a href="#" id="search-btn"><i class="fas fa-search"></i></a>
+                </li>
+                <li class="right-items dropdown">
+                    <a href="#" id="profile-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt"></i></a>
+                    <div class="dropdown-menu new-dropdown" aria-labelledby="profile-dropdown">
+                        {% if request.user.is_authenticated %} 
+                            {% if request.user.is_superuser %}
+                                <a class="dropdown-item" href="{% url 'admin:index' %}">Admin Panel</a>
+                            {% endif %}
+                                <a class="dropdown-item" href="#">Edit Profile</a>
+                                <a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a>
+                        {% else %}
+                            <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
+                            <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
+                        {% endif %}
+                    </div>
+                </li>
+                <li class="dropdown right-items">
+                    <a href="#"><i class="fas fa-heart"></i></a>
+                </li>
+                <li class="dropdown right-items">
+                    <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                </li>
+            </ul>
+
+            <div class="search-form d-md-block d-none">
+                <form>
+                    <input class="search-box" type="text" name="search" placeholder="Search Products" />
+                    <i class="fas fa-search search-form-icon"></i>
+                </form>
+            </div>
+            <a class="close-search" href="#"><i class="fa fa-times"></i></a>
+        </nav>
 
         {% block content %} {% endblock %}
 
@@ -130,6 +144,7 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <!-- Bootstrap 4 JS -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <!-- Bootstrap Better Nav JS -->
         <script src="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js"></script>
         <!-- Custom JS -->
         <script src="{% static 'js/main.js' %}"></script>
