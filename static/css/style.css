@@ -10,7 +10,8 @@ ul {
 /* -------------------------------- Navigation Bar */
 
 .navigation-colour {
-    background: rgba(255, 255, 255, 0.808)
+    background: rgba(255, 255, 255, 0.808);
+    width: 100%;
 }
 
 .navigation-sect {
@@ -62,8 +63,22 @@ ul {
 .new-dropdown {
     position: absolute;
     min-width: auto;
-    right: -50px;
+    right: -65px;
     left: unset;
+}
+
+.cart-count {
+    background: lightgrey;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    position: absolute;
+    top: -9px;
+    right: -14px;
+    color: black;
 }
 
 /* --- Navbar Center Items  */
@@ -195,6 +210,18 @@ ul {
     transition: 1.2s;
 }
 
+.search-button {
+    background: transparent;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    font-size: 15px;
+    position: absolute;
+    top: 24px;
+    right: -4px;
+    padding: 2px 6px;
+}
+
 /* --------------------------Media Query */
 
 /* Active for screen sizes under 992px */
@@ -216,6 +243,11 @@ ul {
 
     .search-form-icon {
         left: 70px;
+    }
+
+    .search-button {
+        right: 120px;
+        margin-left: 30px;
     }
 }
 

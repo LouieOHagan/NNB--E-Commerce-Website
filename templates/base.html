@@ -28,112 +28,115 @@
         {% block extra_css %} {% endblock %}
     </head>
     <body>
-        <nav class="navbar navbar-expand-md navigation-colour">
-            <a class="navbar-brand logo" href="{% url 'home' %}"></a>
-            <button class="navbar-toggler no-border" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon custom-icon"></span>
-            </button>
+        <div class="navigation-colour">
+            <nav class="navbar navbar-expand-md">
+                <a class="navbar-brand logo" href="{% url 'home' %}"></a>
+                <button class="navbar-toggler no-border" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon custom-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse navigation-sect" id="navbarNavDropdown">
-                <ul class="nav-item center-list d-md-flex d-block">
-                    <li>
-                        <div class="mobile-search d-md-none d-block">
-                            <form>
-                                <input type="text" name="search" placeholder="Search Products" />
-                                <i type="submit" class="fas fa-search mobile-search-form-icon"></i>
-                            </form>
-                        </div>
-                    </li>
-                    <hr />
-                    <li class="center-items">
-                        <a href="">DESKTOPS</a>
-                    </li>
+                <div class="collapse navbar-collapse navigation-sect" id="navbarNavDropdown">
+                    <ul class="nav-item center-list d-md-flex d-block">
+                        <li>
+                            <div class="mobile-search d-md-none d-block">
+                                <form>
+                                    <input type="text" name="search" placeholder="Search Products" />
+                                    <i type="submit" class="fas fa-search mobile-search-form-icon"></i>
+                                </form>
+                            </div>
+                        </li>
+                        <hr />
+                        <li class="center-items">
+                            <a href="">DESKTOPS</a>
+                        </li>
 
-                    <li class="center-items">
-                        <a href="">LAPTOPS</a>
-                    </li>
+                        <li class="center-items">
+                            <a href="">LAPTOPS</a>
+                        </li>
 
-                    <li class="center-items">
-                        <a href="">MOBILES</a>
-                    </li>
+                        <li class="center-items">
+                            <a href="">MOBILES</a>
+                        </li>
 
-                    <li class="center-items">
-                        <a href="">TABLETS</a>
-                    </li>
+                        <li class="center-items">
+                            <a href="">TABLETS</a>
+                        </li>
 
-                    <li class="center-items">
-                        <a href="">ACCESSORIES</a>
-                    </li>
-                    <hr />
-                    <div class="d-md-none d-block">
-                        {% if request.user.is_authenticated %} 
-                            {% if request.user.is_superuser %}
+                        <li class="center-items">
+                            <a href="">ACCESSORIES</a>
+                        </li>
+                        <hr />
+                        <div class="d-md-none d-block">
+                            {% if request.user.is_authenticated %} 
+                                {% if request.user.is_superuser %}
+                                    <li class="center-items dropdown">
+                                        <a href="{% url 'admin:index' %}">ADMIN PANEL</a>
+                                    </li>
+                                {% endif %}
                                 <li class="center-items dropdown">
-                                    <a href="{% url 'admin:index' %}">ADMIN PANEL</a>
+                                    <a href="#">EDIT PROFILE</a>
+                                </li>
+                                <li class="center-items dropdown">
+                                    <a href="{% url 'account_logout' %}">SIGN OUT</a>
+                                </li>
+                            {% else %}
+                                <li class="center-items dropdown">
+                                    <a href="{% url 'account_login' %}">LOGIN</a>
+                                </li>
+                                <li class="center-items dropdown">
+                                    <a href="{% url 'account_signup' %}">SIGN UP</a>
                                 </li>
                             {% endif %}
+                            <hr>
                             <li class="center-items dropdown">
-                                <a href="#">EDIT PROFILE</a>
+                                <a href="#">MY CART (1)</a>
                             </li>
                             <li class="center-items dropdown">
-                                <a href="{% url 'account_logout' %}">SIGN OUT</a>
+                                <a href="#">MY WISHLIST</a>
                             </li>
-                        {% else %}
-                            <li class="center-items dropdown">
-                                <a href="{% url 'account_login' %}">LOGIN</a>
-                            </li>
-                            <li class="center-items dropdown">
-                                <a href="{% url 'account_signup' %}">SIGN UP</a>
-                            </li>
-                        {% endif %}
-                        <hr>
-                        <li class="center-items dropdown">
-                            <a href="#">MY CART</a>
-                        </li>
-                        <li class="center-items dropdown">
-                            <a href="#">MY WISHLIST</a>
-                        </li>
-                        <hr>
-                    </div>
-                </ul>
-            </div>
+                            <hr>
+                        </div>
+                    </ul>
+                </div>
 
-            <ul class="right-list">
-                <li class="right-items d-md-block d-none">
-                    <a href="#" id="search-btn"><i class="fas fa-search"></i></a>
-                </li>
-                <li class="right-items dropdown">
-                    <a href="#" id="profile-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt"></i></a>
-                    <div class="dropdown-menu new-dropdown" aria-labelledby="profile-dropdown">
-                        {% if request.user.is_authenticated %} 
-                            {% if request.user.is_superuser %}
-                                <a class="dropdown-item" href="{% url 'admin:index' %}">Admin Panel</a>
+                <ul class="right-list">
+                    <li class="right-items d-md-block d-none">
+                        <a href="#" id="search-btn"><i class="fas fa-search"></i></a>
+                    </li>
+                    <li class="right-items dropdown">
+                        <a href="#" id="profile-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt"></i></a>
+                        <div class="dropdown-menu new-dropdown" aria-labelledby="profile-dropdown">
+                            {% if request.user.is_authenticated %} 
+                                {% if request.user.is_superuser %}
+                                    <a class="dropdown-item" href="{% url 'admin:index' %}">Admin Panel</a>
+                                {% endif %}
+                                    <a class="dropdown-item" href="#">Edit Profile</a>
+                                    <a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a>
+                            {% else %}
+                                <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
+                                <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
                             {% endif %}
-                                <a class="dropdown-item" href="#">Edit Profile</a>
-                                <a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a>
-                        {% else %}
-                            <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
-                            <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
-                        {% endif %}
-                    </div>
-                </li>
-                <li class="dropdown right-items">
-                    <a href="#"><i class="fas fa-heart"></i></a>
-                </li>
-                <li class="dropdown right-items">
-                    <a href="#"><i class="fas fa-shopping-cart"></i></a>
-                </li>
-            </ul>
+                        </div>
+                    </li>
+                    <li class="dropdown right-items">
+                        <a href="#"><i class="fas fa-heart"></i></a>
+                    </li>
+                    <li class="dropdown right-items">
+                        <a href="#"><i class="fas fa-shopping-cart"></i><span class="cart-count">1</span></a>          
+                    </li>
+                </ul>
 
-            <div class="search-form d-md-block d-none">
-                <form>
-                    <input class="search-box" type="text" name="search" placeholder="Search Products" />
-                    <i class="fas fa-search search-form-icon"></i>
-                </form>
-            </div>
-            <a class="close-search" href="#"><i class="fa fa-times"></i></a>
-        </nav>
-
+                <div class="search-form d-md-block d-none">
+                    <form>
+                        <i class="fas fa-search search-form-icon"></i>
+                        <input class="search-box" type="text" name="search" placeholder="Search Products" />
+                        <button class="search-button" type="submit">Search</button>
+                    </form>
+                </div>
+                <a class="close-search" href="#"><i class="fa fa-times"></i></a>
+            </nav>
+        </div>
+        
         {% block content %} {% endblock %}
 
         <!-- JavaScript Links Placed at bottom to increase page load times-->
