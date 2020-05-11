@@ -3,6 +3,28 @@
 
 {% block title %}NNB | Home Page{% endblock %}
 
-{% block content %}
-    <h1>This our a new template!</h1>
+{% block extra_css %} 
+    <link rel="stylesheet" href="{% static 'home/css/home-image.css' %}">
 {% endblock %}
+
+    {% block content %}
+        <div class="container-fluid no-gutters home-image-sect">
+            <section class="slider">
+                <input type="radio" name="slide" id="" class="radio1 custom-btn">
+                <input type="radio" name="slide" id="" class="radio2" checked>
+                <input type="radio" name="slide" id="" class="radio3">
+                <div class="text-slide text1">
+                    <h2>Mobiles</h2>
+                </div>
+
+                <div class="text-slide text2">
+                    <h2>Laptops</h2>
+                </div>
+
+                <div class="text-slide text3">
+                    <h2>Tablets</h2>
+                </div>
+                <div class="slide"></div>
+            </section>
+        </div>
+    {% endblock %}
