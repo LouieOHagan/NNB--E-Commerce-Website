@@ -28,7 +28,7 @@
         {% block extra_css %} {% endblock %}
     </head>
     <body>
-        <div class="fixed-top navigation-colour">
+        <div class="navigation-colour {% block nav_type %}sticky-top{% endblock %}">
             <nav class="navbar navbar-expand-md">
                 <a class="navbar-brand logo" href="{% url 'home' %}"></a>
                 <button class="navbar-toggler no-border" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
