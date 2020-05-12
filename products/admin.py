@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ProductType
+from .models import ProductType, Product
 
 
 class ProductTypeAdmin(admin.ModelAdmin):
@@ -19,4 +19,39 @@ class ProductTypeAdmin(admin.ModelAdmin):
     ]
 
 
+class ProductAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Product Information', {
+            'fields': [
+                'category',
+                'name',
+                'product_code',
+                'product_description',
+            ]
+        }),
+        ('Pricing', {
+            'fields': [
+                'price_original',
+                'price_current',
+            ]
+        }),
+        ('Stock', {
+            'fields': [
+                'in_stock',
+                'stock',
+            ]
+        }),
+        ('Images', {
+            'fields': [
+                'image_1',
+                'image_2',
+                'image_3',
+                'image_4',
+                'image_5',
+            ]
+        }),
+    ]
+
+
 admin.site.register(ProductType, ProductTypeAdmin)
+admin.site.register(Product, ProductAdmin)
