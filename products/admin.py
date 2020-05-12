@@ -52,6 +52,19 @@ class ProductAdmin(admin.ModelAdmin):
         }),
     ]
 
+    list_display = (
+        'product_code',
+        'name',
+        'category',
+        'price_original',
+        'price_current',
+        'in_stock',
+    )
+
+    ordering = (
+        'product_code',
+    )
+
 
 admin.site.register(ProductType, ProductTypeAdmin)
 admin.site.register(Product, ProductAdmin)

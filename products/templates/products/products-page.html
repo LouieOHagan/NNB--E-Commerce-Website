@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home Page | NNB{% endblock %}
+
+{% block content %}
+<h1>Products Page</h1>
+    {% for product in products %}
+        <h1 class="m-10">{{ product.name }}</h1>
+        <p class="m-10">{{ product.category }}</p>
+        <p class="m-10">{{ product.product_code }}</p>
+        <p class="m-10">{{ product.product_description }}</p>
+        <p class="m-10">{{ product.price_original }}</p>
+        <p class="m-10">{{ product.price_current }}</p>
+        <p class="m-10">{{ product.in_stock }}</p>
+        <p class="m-10">{{ product.stock }}</p>
+        <img src="../media/{{ product.image_1 }}" alt="">
+        <img src="../media/{{ product.image_3 }}" alt="">
+        <img src="../media/{{ product.image_4 }}" alt="">
+        <img src="../media/{{ product.image_5 }}" alt="">
+        <img src="../media/{{ product.image_2 }}" alt="">
+        <br>
+    {% endfor %}
+
+{% endblock %}
