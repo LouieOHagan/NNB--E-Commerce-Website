@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.db.models import Q
+from django.db.models.functions import Lower
 
 from .models import Product, ProductType
 
@@ -9,7 +10,7 @@ def display_products(request):
     product_type = None
     query = None
     sort_by = None
-    direction = None
+    order_direction = None
 
     if request.GET:
         if 'product_type' in request.GET:
@@ -20,12 +21,18 @@ def display_products(request):
         if 'sort' in request.GET:
             sort_by = request.GET['sort']
 
+            if sort_by == "name":
+                sort_by = 'lower_name'
+                all_products = all_products.annotate(lower_name=Lower('name'))
+
             if 'direction' in request.GET:
-                direction = request.GET['direction']
-                if direction == "desc":
+                order_direction = request.GET['direction']
+                if order_direction == "desc":
                     sort_by = f'-{sort_by}'
 
             all_products = all_products.order_by(sort_by)
+
+        sorted_by = f'{sort_by}_{order_direction}'
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -35,13 +42,11 @@ def display_products(request):
 
             all_products = all_products.filter(query_results)
 
-    current_sorting = f'{sort_by}_{direction}'
-
     context = {
         'products': all_products,
         'product_type': product_type,
+        'sorted_by': sorted_by,
         'search_content': query,
-        'sorted_by': current_sorting
     }
 
     return render(request, "products/products-page.html", context)

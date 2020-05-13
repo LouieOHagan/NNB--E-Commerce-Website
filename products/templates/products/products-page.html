@@ -5,7 +5,6 @@
 
 {% block content %}
 <h1>Products Page</h1>
-    123{{ current_cat }}
     {% for type in product_type %}  
         <p><strong>Product Type Name:</strong> {{ type.name }}</p>
         <p><strong>Product Type Friendly Name:</strong> {{ type.friendly_name }}</p>
@@ -16,17 +15,13 @@
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {% if sorted_by == "None_None" %}
                     Sort By:
-                {% endif %}
-                {% if sorted_by == "price_current_asc" %}
+                {% elif sorted_by == "price_current_asc" %}
                     Price Low to High
-                {% endif %}
-                {% if sorted_by == "-price_current_desc" %}
+                {% elif sorted_by == "-price_current_desc" %}
                     Price High to Low
-                {% endif %}
-                {% if sorted_by == "name_asc" %}
+                {% elif sorted_by == "lower_name_asc" %}
                     Name A to Z
-                {% endif %}
-                {% if sorted_by == "-name_desc" %}
+                {% elif sorted_by == "-lower_name_desc" %}
                     Name Z to A
                 {% endif %}
             </button>
