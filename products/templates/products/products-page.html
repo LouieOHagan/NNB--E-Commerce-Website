@@ -5,6 +5,13 @@
 
 {% block content %}
 <h1>Products Page</h1>
+
+    {% for type in product_type %}  
+        <p>{{ type.name }}</p>
+        <p>{{ type.friendly_name }}</p>
+        <p>{{ type.description }}</p>
+    {% endfor %}
+    <hr>
     {% for product in products %}
         <h1 class="m-10">{{ product.name }}</h1>
         <p class="m-10">{{ product.category }}</p>
