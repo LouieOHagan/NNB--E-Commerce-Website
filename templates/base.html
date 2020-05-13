@@ -39,9 +39,11 @@
                     <ul class="nav-item center-list d-md-flex d-block">
                         <li>
                             <div class="mobile-search d-md-none d-block">
-                                <form>
-                                    <input type="text" name="search" placeholder="Search Products" />
-                                    <i type="submit" class="fas fa-search mobile-search-form-icon"></i>
+                                <form action="{% url 'display_products' %}" method="GET">
+                                    <input type="text" name="q" placeholder="Search Products" />
+                                    <button type="submit" class="mobile-search-btn">
+                                        <i class="fas fa-search mobile-search-form-icon"></i>
+                                    </button>
                                 </form>
                             </div>
                         </li>
@@ -127,9 +129,9 @@
                 </ul>
 
                 <div class="search-form d-md-block d-none">
-                    <form>
+                    <form action="{% url 'display_products' %}" method="GET">
                         <i class="fas fa-search search-form-icon"></i>
-                        <input class="search-box" type="text" name="search" placeholder="Search Products" />
+                        <input class="search-box" type="text" name="q" placeholder="Search Products" />
                         <button class="search-button" type="submit">Search</button>
                     </form>
                 </div>
