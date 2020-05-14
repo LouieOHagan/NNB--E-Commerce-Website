@@ -91,7 +91,7 @@
                             {% endif %}
                             <hr>
                             <li class="center-items dropdown">
-                                <a href="#">MY CART (1)</a>
+                                <a href="{% url 'view_cart' %}">MY CART (1)</a>
                             </li>
                             <li class="center-items dropdown">
                                 <a href="#">MY WISHLIST</a>
@@ -124,7 +124,7 @@
                         <a href="#"><i class="fas fa-heart"></i></a>
                     </li>
                     <li class="dropdown right-items">
-                        <a href="#"><i class="fas fa-shopping-cart"></i><span class="cart-count">1</span></a>          
+                        <a href="{% url 'view_cart' %}"><i class="fas fa-shopping-cart"></i><span class="cart-count">1</span></a>    
                     </li>
                 </ul>
 

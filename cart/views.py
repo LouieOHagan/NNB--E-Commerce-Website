@@ -1,5 +1,5 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import render
 
 
-def cart(response):
-    return HttpResponse('This is the cart page')
+def view_cart(response):
+    return render(response, 'cart/cart.html')
