@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Products Page | NNB{% endblock %}
+{% block title %}{% for type in product_type %}{{ type.friendly_name }} {% endfor %}- Products Page | NNB{% endblock %}
 
 {% block content %}
 <h1>Products Page</h1>
@@ -39,20 +39,37 @@
         <p><strong>Product Category:</strong> {{ product.category }}</p>
         <p><strong>Product Code:</strong> {{ product.product_code }}</p>
         <p><strong>Product Description:</strong> {{ product.product_description }}</p>
-        <p><strong>Original Product Price:</strong> {{ product.price_original }}</p>
-        <p><strong>Current Product Price:</strong> {{ product.price_current }}</p>
-        <p><strong>In Stock ? :</strong> {{ product.in_stock }}</p>
+        <p><strong>Original Product Price:</strong> <s>&euro;{{ product.price_original }}</s></p>
+        <p><strong>Current Product Price:</strong> &euro;{{ product.price_current }}</p>
+        {% if product.in_stock %}
+            {% if product.stock >= 10%}
+                <p><strong>In Stock ? :</strong> In Stock</p>
+            {% else %}
+                <p><strong>In Stock ? :</strong> Low Stock</p>
+            {% endif %}
+        {% else %}
+            <p><strong>In Stock ? :</strong> Out of Stock</p>
+        {% endif %}
         <p><strong>Stock Amount:</strong> {{ product.stock }}</p>
+
         <p><strong>Image 1:</strong></p>
-        <img src="../media/{{ product.image_1 }}" alt="" height="100" width="100">
-        <p><strong>Image 2:</strong></p>
-        <img src="../media/{{ product.image_3 }}" alt="">
-        <p><strong>Image 3:</strong></p>
-        <img src="../media/{{ product.image_4 }}" alt="">
-        <p><strong>Image 4:</strong></p>
-        <img src="../media/{{ product.image_5 }}" alt="">
-        <p><strong>Image 5:</strong></p>
-        <img src="../media/{{ product.image_2 }}" alt="">
+        <img src="/media/{{ product.image_1 }}" alt="" height="100" width="100">
+        {% if product.image_2 %}
+            <p><strong>Image 2:</strong></p>
+            <img src="/media/{{ product.image_2 }}" alt="">
+        {% endif %}
+        {% if product.image_3 %}
+            <p><strong>Image 3:</strong></p>
+            <img src="/media/{{ product.image_3 }}" alt="">
+        {% endif %}
+        {% if product.image_4 %}
+            <p><strong>Image 4:</strong></p>
+            <img src="/media/{{ product.image_4 }}" alt="">
+        {% endif %}
+        {% if product.image_5 %}
+            <p><strong>Image 5:</strong></p>
+            <img src="/media/{{ product.image_5 }}" alt="">
+        {% endif %}
         <br>
         <a href="{% url 'indiv_products' product.id %}">Click</a>
         <hr>
