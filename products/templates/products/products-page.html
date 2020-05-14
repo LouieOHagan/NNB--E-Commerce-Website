@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Home Page | NNB{% endblock %}
+{% block title %}Products Page | NNB{% endblock %}
 
 {% block content %}
 <h1>Products Page</h1>
@@ -54,6 +54,7 @@
         <p><strong>Image 5:</strong></p>
         <img src="../media/{{ product.image_2 }}" alt="">
         <br>
+        <a href="{% url 'indiv_products' product.id %}">Click</a>
         <hr>
     {% endfor %}
 

@@ -61,10 +61,6 @@ class ProductAdmin(admin.ModelAdmin):
         'in_stock',
     )
 
-    ordering = (
-        'product_code',
-    )
-
 
 admin.site.register(ProductType, ProductTypeAdmin)
 admin.site.register(Product, ProductAdmin)

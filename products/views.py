@@ -50,3 +50,13 @@ def display_products(request):
     }
 
     return render(request, "products/products-page.html", context)
+
+
+def indiv_products(request, product_id):
+    product_info = Product.objects.get(pk=product_id)
+
+    context = {
+        'product': product_info,
+    }
+
+    return render(request, 'products/individual-product.html', context)
