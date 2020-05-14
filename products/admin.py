@@ -61,6 +61,19 @@ class ProductAdmin(admin.ModelAdmin):
         'in_stock',
     )
 
+    search_fields = (
+        'name',
+        'product_code',
+        'product_description',
+    )
+
+    list_filter = (
+        'category',
+        'in_stock'
+    )
+
+    save_on_top = True
+
 
 admin.site.register(ProductType, ProductTypeAdmin)
 admin.site.register(Product, ProductAdmin)

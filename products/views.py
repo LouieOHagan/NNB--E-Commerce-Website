@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from django.db.models.functions import Lower
 
@@ -53,7 +53,7 @@ def display_products(request):
 
 
 def indiv_products(request, product_id):
-    product_info = Product.objects.get(pk=product_id)
+    product_info = get_object_or_404(Product, pk=product_id)
 
     context = {
         'product': product_info,
