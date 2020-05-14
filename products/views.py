@@ -6,6 +6,11 @@ from .models import Product, ProductType
 
 
 def display_products(request):
+    """ display_products view is used to render the products page and
+    display all products to page. It also takes care of the search/querying
+    functionality and the sorting products by functionality
+    """
+
     all_products = Product.objects.all()
     product_type = None
     query = None
@@ -53,6 +58,9 @@ def display_products(request):
 
 
 def indiv_products(request, product_id):
+    """ indiv_products view renders individual product pages
+    which displays more information about each product.
+    """
     product_info = get_object_or_404(Product, pk=product_id)
 
     context = {
