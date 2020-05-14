@@ -18,6 +18,7 @@
                 <input class="form-control qty_input" type="number" value="{{ item.quantity }}" min="1" max="50" name="quantity" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
                 <input type="submit" value="Update">
             </form>
+            <a href="{% url 'remove_cart_item' item.item_id %}">Remove</a>
             <p><strong>Sub Total:</strong> &euro;{{ item.product.price_current | multiply:item.quantity }}</p>
 
             {% if for_free_delivery %}
@@ -25,12 +26,12 @@
             {% endif %}
             <hr>
         {% endfor %}
+        <p><strong>Items Total:</strong> &euro;{{ total }}</p>
+        <p><strong>Delivery Cost:</strong> &euro;{{ delivery_cost }}</p>
+        <p><strong>Grand Total:</strong> &euro;{{ grand_total }}</p>
     {% else %}
         <p>Your cart is currently empty</p>
     {% endif %}
 
 
-    <p><strong>Items Total:</strong> &euro;{{ total }}</p>
-    <p><strong>Delivery Cost:</strong> &euro;{{ delivery_cost }}</p>
-    <p><strong>Grand Total:</strong> &euro;{{ grand_total }}</p>
 {% endblock %}

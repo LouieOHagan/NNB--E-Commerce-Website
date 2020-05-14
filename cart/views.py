@@ -29,7 +29,17 @@ def update_cart(request, item_id):
     if item_id in list(cart.keys()):
         cart[item_id] = quantity
     else:
-        cart.pop[item_id]
+        cart.pop(item_id)
+
+    request.session['cart'] = cart
+
+    return redirect(reverse('view_cart'))
+
+
+def remove_cart_item(request, item_id):
+    cart = request.session.get('cart', {})
+
+    cart.pop(item_id)
 
     request.session['cart'] = cart
 
