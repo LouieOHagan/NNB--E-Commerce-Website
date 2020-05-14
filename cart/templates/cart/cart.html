@@ -4,5 +4,16 @@
 {% block title %}Shopping Cart | NNB {% endblock %}
 
 {% block content %}
-    This is the cart 
+    <h1>Cart Items</h1>
+
+    {% if cart_items %}
+        {{ cart_items }}
+    {% else %}
+        <p>Your cart is currently empty</p>
+    {% endif %}
+
+
+    <p><strong>Grand Total:</strong> {{ total }}</p>
+    <p><strong>Grand Total:</strong> {{ delivery_cost }}</p>
+    <p><strong>Grand Total:</strong> {{ grand_total }}</p>
 {% endblock %}
