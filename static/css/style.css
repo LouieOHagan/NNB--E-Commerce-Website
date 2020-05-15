@@ -21,7 +21,7 @@ ul {
 }
 
 .custom-icon {
-    background-image: url('../../media/burger-icon-black.png') !important;
+    background-image: url('/media/burger-icon-black.png') !important;
 }
 
 .no-border {

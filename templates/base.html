@@ -91,7 +91,7 @@
                             {% endif %}
                             <hr>
                             <li class="center-items dropdown">
-                                <a href="{% url 'view_cart' %}">MY CART {% if cart_items %}({{ cart_items|length }}){% endif %}</a>
+                                <a href="{% url 'view_cart' %}">MY CART {% if cart_items %}({{ product_count }}){% endif %}</a>
                             </li>
                             <li class="center-items dropdown">
                                 <a href="#">MY WISHLIST</a>
@@ -124,7 +124,7 @@
                         <a href="#"><i class="fas fa-heart"></i></a>
                     </li>
                     <li class="dropdown right-items">
-                        <a href="{% url 'view_cart' %}"><i class="fas fa-shopping-cart"></i>{% if cart_items %}<span class="cart-count">{{ cart_items|length }}</span>{% endif %}</a>    
+                        <a href="{% url 'view_cart' %}"><i class="fas fa-shopping-cart"></i>{% if cart_items %}<span class="cart-count">{{ product_count }}</span>{% endif %}</a>    
                     </li>
                 </ul>
 

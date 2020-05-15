@@ -33,30 +33,13 @@
                 <a class="dropdown-item" href="{% url 'display_products' %}?product_type={% for type in product_type %}{{ type.name }},{% endfor %}&sort=name&direction=desc">Name Z to A</a>
             </div>
         </div>
-
+    <hr>
     {% for product in products %}
-        <p><strong>Product Name:</strong> {{ product.name }}</p>
-        <p><strong>Product Category:</strong> {{ product.category }}</p>
-        <p><strong>Product Code:</strong> {{ product.product_code }}</p>
-        <p><strong>Product Description:</strong> {{ product.product_description }}</p>
-        <p><strong>Original Product Price:</strong> <s>&euro;{{ product.price_original }}</s></p>
-        <p><strong>Current Product Price:</strong> &euro;{{ product.price_current }}</p>
-        {% if product.in_stock %}
-            {% if product.stock >= 10%}
-                <p><strong>In Stock ? :</strong> In Stock</p>
-            {% else %}
-                <p><strong>In Stock ? :</strong> Low Stock</p>
-            {% endif %}
-        {% else %}
-            <p><strong>In Stock ? :</strong> Out of Stock</p>
-        {% endif %}
-        <p><strong>Stock Amount:</strong> {{ product.stock }}</p>
-
         <p><strong>Image 1:</strong></p>
-        <img src="/media/{{ product.image_1 }}" alt="" height="100" width="100">
+        <img src="{{ product.image_1.url }}" alt="" height="100" width="100">
         {% if product.image_2 %}
             <p><strong>Image 2:</strong></p>
-            <img src="/media/{{ product.image_2 }}" alt="">
+            <img src="{{ MEDIA_URL }}{{ product.image_2.url }}" alt="">
         {% endif %}
         {% if product.image_3 %}
             <p><strong>Image 3:</strong></p>
@@ -70,8 +53,23 @@
             <p><strong>Image 5:</strong></p>
             <img src="/media/{{ product.image_5 }}" alt="">
         {% endif %}
-        <br>
-        <a href="{% url 'indiv_products' product.id %}">Click</a>
+        <p><strong>Product Name:</strong> {{ product.name }}</p>
+        <p><strong>Product Category:</strong> {{ product.category }}</p>
+        <p><strong>Product Code:</strong> {{ product.product_code }}</p>
+        <p><strong>Product Description:</strong> {{ product.product_description }}</p>
+        <p><strong>Original Product Price:</strong> <s>&euro;{{ product.price_original }}</s></p>
+        <p><strong>Current Product Price:</strong> &euro;{{ product.price_current }}</p>
+        {% if product.in_stock %}
+            {% if product.stock >= 10%}
+                <p><strong>In Stock ? :</strong><span style="color: green;"> In Stock</span></p>
+            {% else %}
+                <p><strong>In Stock ? :</strong><span style="color: orange;"> Low Stock</span></p>
+            {% endif %}
+        {% else %}
+            <p><strong>In Stock ? :</strong><span style="color: red;"> Out of Stock</span></p>
+        {% endif %}
+        <p><strong>Stock Amount:</strong> {{ product.stock }}</p>
+        <a href="{% url 'indiv_products' product.id %}" class="btn btn-success">View Product</a>
         <hr>
     {% endfor %}
 

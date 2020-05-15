@@ -22,19 +22,19 @@
             <p><strong>Sub Total:</strong> &euro;{{ item.product.price_current | multiply:item.quantity }}</p>
 
             {% if for_free_delivery %}
-                Free Delivery if you spend {{ for_free_delivery }} more
+                Free Delivery if you spend <strong>{{ for_free_delivery }}</strong> more
             {% endif %}
             <hr>
         {% endfor %}
 
-        <p>Cart Item Amount: <strong>{{ cart_items|length }}</strong></p>
+        <p>Cart Item Amount: <strong>{{ product_count }}</strong></p>
 
         <p><strong>Items Total:</strong> &euro;{{ total }}</p>
-        <p><strong>Delivery Cost:</strong> &euro;{{ delivery_cost }}</p>
-        <p><strong>Grand Total:</strong> &euro;{{ grand_total }}</p>
+        <p><strong>Delivery Cost:</strong> &euro;{{ delivery_cost|floatformat:2 }}</p>
+        <p><strong>Grand Total:</strong> &euro;{{ grand_total|floatformat:2 }}</p>
     {% else %}
         <p>Your cart is currently empty</p>
-        <p>Cart Item Amount: <strong>{{ cart_items|length }}</strong></p>
+        <p>Cart Item Amount: <strong>{{ product_count }}</strong></p>
     {% endif %}
 
 
