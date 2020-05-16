@@ -16,6 +16,7 @@ def display_products(request):
     query = None
     sort_by = None
     order_direction = None
+    sorted_by = None
 
     if request.GET:
         if 'product_type' in request.GET:

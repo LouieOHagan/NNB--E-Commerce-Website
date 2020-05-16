@@ -2,7 +2,6 @@
 *.pyc
 __pycache__
 env.py
-.coverage
 .theia/
 .gitpod.dockerfile
 .gitpod.yml
