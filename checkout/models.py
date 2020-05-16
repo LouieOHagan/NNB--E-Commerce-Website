@@ -35,10 +35,32 @@ class Order(models.Model):
                                       )
 
     def _generate_order_number(self):
-        """
-        Generate a random, unique order number using UUID
-        """
+        """ Generate a random, unique order number using UUID """
         return uuid.uuid4().hex.upper()
+
+    def update_total(self):
+        """ This function is used to update the grand_toal of the order
+        every time that a product in the order is added/modified.
+        """
+        self.total = self.lineitems.aggregate(Sum('product_cost'))['product_cost__sum'] or 0
+        if self.total < settings.FREE_DELIVERY_THRESHOLD:
+            self.delivery_cost = settings.STANDARD_DELIVERY_COST
+        else:
+            self.delivery_cost = 0
+        self.grand_total = self.total + self.delivery_cost
+        self.save()
+
+    def save(self, *args, **kwargs):
+        """ This function will overwrite the default save method
+        to check if the order doesnt have an order number assinged,
+        if it doesnt the method will assign it a unique number using UUID
+        """
+        if not self.order_number:
+            self.order_number = self._generate_order_number()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.order_number
 
 
 class OrderProduct(models.Model):
@@ -57,3 +79,15 @@ class OrderProduct(models.Model):
                                        null=False,
                                        blank=False,
                                        editable=False)
+
+    def save(self, *args, **kwargs):
+        """ This function will overwrite the default save method
+        to update the product_cost field by ensuring that the the value
+        is the products price multiplied by the quantity of the item
+        """
+        self.product_cost = self.product.price * self.quantity
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'Product Code {self.product.product_code} \
+            on order {self.order.order_number}'
