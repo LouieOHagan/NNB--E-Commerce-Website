@@ -66,7 +66,7 @@ class Order(models.Model):
 class OrderProduct(models.Model):
     order = models.ForeignKey(Order,
                               null=False,
-                              blank=False, 
+                              blank=False,
                               on_delete=models.CASCADE,
                               related_name='lineitems')
     product = models.ForeignKey(Product,
@@ -85,7 +85,7 @@ class OrderProduct(models.Model):
         to update the product_cost field by ensuring that the the value
         is the products price multiplied by the quantity of the item
         """
-        self.product_cost = self.product.price * self.quantity
+        self.product_cost = self.product.price_current * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):
