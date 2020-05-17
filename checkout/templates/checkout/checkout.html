@@ -10,62 +10,72 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Checkout Page</h1>
+    <div>
+        <h1>Checkout Page</h1>
 
-    <form action="{% url 'checkout' %}" method="POST" id="payment-form">
-    {% csrf_token %}
+        <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+        {% csrf_token %}
 
-        <h5>Details</h5>
-        {{ order_form.full_name | as_crispy_field }}
-        {{ order_form.email_address | as_crispy_field }}
+            <h5>Details</h5>
+            {{ order_form.full_name | as_crispy_field }}
+            {{ order_form.email_address | as_crispy_field }}
 
-        <h5>Delivery</h5>
-        {{ order_form.street_address1 | as_crispy_field }}
-        {{ order_form.street_address2 | as_crispy_field }}
-        {{ order_form.town_or_city | as_crispy_field }}
-        {{ order_form.county | as_crispy_field }}
-        {{ order_form.postcode | as_crispy_field }}
-        {{ order_form.country | as_crispy_field }}
-        
+            <h5>Delivery</h5>
+            {{ order_form.street_address1 | as_crispy_field }}
+            {{ order_form.street_address2 | as_crispy_field }}
+            {{ order_form.town_or_city | as_crispy_field }}
+            {{ order_form.county | as_crispy_field }}
+            {{ order_form.postcode | as_crispy_field }}
+            {{ order_form.country | as_crispy_field }}
+            
 
-        <h5>Payment</h5>
-        <!-- A stripe card element will go here -->
+            <h5>Payment</h5>
+            <!-- A stripe card element will go here -->
 
-        <!-- Used to display form errors -->
+            <!-- Used to display form errors -->
 
-        <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
-        <!-- A stripe card element will go here -->
-        <div class="mb-3" id="card-element"></div>
-        <!-- Used to display form errors -->
-        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-        <!-- Pass the client secret to the view so we can get the payment intent -->
-        <input type="hidden" value="{{ client_secret }}" name="client_secret"> 
-             
-        <a href="{% url 'view_cart' %}">
-            <span>Adjust Bag</span>
-        </a>
-        <button>
-            <span>Complete Order</span>
-        </button>
-    </form>
-    <br>
-    <hr>
+            <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+            <!-- A stripe card element will go here -->
+            <div class="mb-3" id="card-element"></div>
+            <!-- Used to display form errors -->
+            <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+            <!-- Pass the client secret to the view so we can get the payment intent -->
+            <input type="hidden" value="{{ client_secret }}" name="client_secret"> 
+                
+            <a href="{% url 'view_cart' %}">
+                <span>Adjust Bag</span>
+            </a>
+            <button>
+                <span>Complete Order</span>
+            </button>
+        </form>
+        <br>
+        <hr>
 
-    <h5>Order Summary</h5>
-    {% for item in cart_items %}
-        <img src="{{ item.product.image_1.url }}" alt="{{ item.product.image_1 }}" height="100" width="100">
-        <p><strong>Product Name:</strong> {{ item.product.name }}</p>
-        <p><strong>Product Code:</strong> {{ item.product.product_code }}</p>
-        <p><strong>Price Each:</strong> &euro;{{ item.product.price_current }}</p>
-        
-        <a href="{% url 'remove_cart_item' item.item_id %}">Remove</a>
-        <p><strong>Sub Total:</strong> &euro;{{ item.product.price_current | multiply:item.quantity }}</p>
-    {% endfor %}
+        <h5>Order Summary</h5>
+        {% for item in cart_items %}
+            <img src="{{ item.product.image_1.url }}" alt="{{ item.product.image_1 }}" height="100" width="100">
+            <p><strong>Product Name:</strong> {{ item.product.name }}</p>
+            <p><strong>Product Code:</strong> {{ item.product.product_code }}</p>
+            <p><strong>Price Each:</strong> &euro;{{ item.product.price_current }}</p>
+            
+            <a href="{% url 'remove_cart_item' item.item_id %}">Remove</a>
+            <p><strong>Sub Total:</strong> &euro;{{ item.product.price_current | multiply:item.quantity }}</p>
+        {% endfor %}
 
-    <p><strong>Items Total:</strong> &euro;{{ total }}</p>
-    <p><strong>Delivery Cost:</strong> &euro;{{ delivery_cost|floatformat:2 }}</p>
-    <p><strong>Grand Total:</strong> &euro;{{ grand_total|floatformat:2 }}</p>
+        <p><strong>Items Total:</strong> &euro;{{ total }}</p>
+        <p><strong>Delivery Cost:</strong> &euro;{{ delivery_cost|floatformat:2 }}</p>
+        <p><strong>Grand Total:</strong> &euro;{{ grand_total|floatformat:2 }}</p>
+    </div>
 
+    <div id="loading-overlay">
+        <h1 class="loading-spinner">
+            <span class="icon">
+                <i class="fas fa-3x fa-spinner fa-spin"></i>
+            </span>
+        </h1>
+        <h3 class="loading-spinner">Processing Order...</h3>
+    </div>
 {% endblock %}
 
 {% block extra_javascript %} 
