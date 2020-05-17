@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% load cart_tools %}
+
+{% block title %}Checkout | NNB {% endblock %}
+
+{% block extra_css %}
+    <!-- Custom Checkotu Page CSS -->
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <h1>Your order was successful</h1>
+
+    <p class="text-black">Your order information is below. A confirmation email will be sent to <strong>{{ order.email_address }}</strong>.</p>
+
+{% endblock %}
