@@ -12,7 +12,7 @@
 {% block content %}
     <h1>Checkout Page</h1>
 
-    <form action="{% url 'checkout' %}" method="POST">
+    <form action="{% url 'checkout' %}" method="POST" id="payment-form">
     {% csrf_token %}
 
         <h5>Details</h5>
