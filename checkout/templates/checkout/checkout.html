@@ -4,6 +4,11 @@
 
 {% block title %}Checkout | NNB {% endblock %}
 
+{% block extra_css %}
+    <!-- Custom Checkotu Page CSS -->
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
+{% endblock %}
+
 {% block content %}
     <h1>Checkout Page</h1>
 
@@ -21,18 +26,27 @@
         {{ order_form.county | as_crispy_field }}
         {{ order_form.postcode | as_crispy_field }}
         {{ order_form.country | as_crispy_field }}
+        
 
         <h5>Payment</h5>
         <!-- A stripe card element will go here -->
 
         <!-- Used to display form errors -->
-                 
-            <a href="{% url 'view_cart' %}">
-                <span>Adjust Bag</span>
-            </a>
-            <button>
-                <span>Complete Order</span>
-            </button>
+
+        <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+        <!-- A stripe card element will go here -->
+        <div class="mb-3" id="card-element"></div>
+        <!-- Used to display form errors -->
+        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+        <!-- Pass the client secret to the view so we can get the payment intent -->
+        <input type="hidden" value="{{ client_secret }}" name="client_secret"> 
+             
+        <a href="{% url 'view_cart' %}">
+            <span>Adjust Bag</span>
+        </a>
+        <button>
+            <span>Complete Order</span>
+        </button>
     </form>
     <br>
     <hr>
@@ -52,4 +66,11 @@
     <p><strong>Delivery Cost:</strong> &euro;{{ delivery_cost|floatformat:2 }}</p>
     <p><strong>Grand Total:</strong> &euro;{{ grand_total|floatformat:2 }}</p>
 
+{% endblock %}
+
+{% block extra_javascript %} 
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret"  }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}

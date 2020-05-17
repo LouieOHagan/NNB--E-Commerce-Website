@@ -36,6 +36,7 @@
         <p>Your cart is currently empty</p>
         <p>Cart Item Amount: <strong>{{ product_count }}</strong></p>
     {% endif %}
+    <a href="{% url 'checkout' %}">Checkout</a>
 
 
 {% endblock %}
