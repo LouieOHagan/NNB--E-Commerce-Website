@@ -125,3 +125,15 @@ def edit_review(request, product_id, review_id):
             return redirect('indiv_products', product_id)
     else:
         return redirect('account_login')
+
+
+def delete_review(request, product_id, review_id):
+    if request.user.is_authenticated:
+        product = get_object_or_404(Product, pk=product_id)
+        review = ProductReview.objects.get(product=product, pk=review_id)
+
+        if request.user == review.user:
+            review.delete()
+        return redirect('indiv_products', product_id)
+    else:
+        return redirect('account_login')
