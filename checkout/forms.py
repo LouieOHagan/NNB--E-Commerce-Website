@@ -15,7 +15,7 @@ class OrderForm(forms.ModelForm):
               'county',
               'postcode',
               'country',
-    )
+        )
 
     def __init__(self, *args, **kwargs):
         """ Used to customize form fields such as removing labels that are

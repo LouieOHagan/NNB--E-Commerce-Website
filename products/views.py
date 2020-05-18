@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.db.models.functions import Lower
 
-from .models import Product, ProductType
+from .models import Product, ProductType, ProductReview
+from .forms import ReviewForm
 
 
 def display_products(request):
@@ -63,9 +64,33 @@ def indiv_products(request, product_id):
     which displays more information about each product.
     """
     product_info = get_object_or_404(Product, pk=product_id)
+    reviews = ProductReview.objects.filter(product=product_id)
 
     context = {
         'product': product_info,
+        'reviews': reviews,
     }
 
     return render(request, 'products/individual-product.html', context)
+
+
+def add_review(request, product_id):
+    if request.user.is_authenticated:
+        product = get_object_or_404(Product, pk=product_id)
+        if request.method == 'POST':
+            form = ReviewForm(request.POST or None)
+            if form.is_valid():
+                data = form.save(commit=False)
+                data.user = request.user
+                data.display_name = request.POST['display_name']
+                data.product = product
+                data.rating = request.POST['rating']
+                data.title = request.POST['title']
+                data.product_review = request.POST['product_review']
+                data.save()
+                return redirect('indiv_products', product_id)
+        else:
+            form = ProductReview()
+        return redirect('indiv_products', {'form': form})
+    else:
+        return redirect('account_login')

@@ -53,4 +53,30 @@
     {% else %}
         <button type="button" class="btn btn-primary" disabled>Out of Stock</button>
     {% endif %}
+
+    <h2>Add Review</h2>
+    <form action="{% url 'add_review' product.id %}" method="POST">
+        {% csrf_token %}
+
+        <input type="text" placeholder="Display Name" name="display_name">
+        <input type="text" placeholder="Rating" name="rating">
+        <input type="text" placeholder="Review Title" name="title">
+
+        <textarea name="product_review" id="" cols="30" rows="5"></textarea>
+
+        <input type="submit" value="Post Review">
+    </form>   
+
+    <ul>
+        {% for review in reviews %}
+            {% if review.display_name %}
+                <li>By: {{ review.display_name }}</li>
+            {% else %}
+                <li>{{ review.user }}</li>
+            {% endif %}
+            <li>Rating: {{ review.rating }}</li>
+            <li>Title: {{ review.title }}</li>
+            <li>Review: {{ review.product_review }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
