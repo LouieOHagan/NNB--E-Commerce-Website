@@ -3,6 +3,7 @@ from django.conf import settings
 from django.db.models import Sum
 from decimal import Decimal
 
+from django_countries.fields import CountryField
 import uuid
 
 from products.models import Product
@@ -17,7 +18,9 @@ class Order(models.Model):
     town_or_city = models.CharField(max_length=40, blank=False)
     county = models.CharField(max_length=80, blank=True)
     postcode = models.CharField(max_length=20, blank=True)
-    country = models.CharField(max_length=40, blank=False)
+    country = CountryField(blank_label="Country *",
+                           max_length=40,
+                           blank=False)
     order_date = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(max_digits=10,
                                 decimal_places=2,
