@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class ProductType(models.Model):
@@ -32,3 +33,15 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ProductReview(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    display_name = models.CharField(max_length=60, blank=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    rating = models.IntegerField(blank=False, null=False)
+    title = models.CharField(max_length=254)
+    product_review = models.TextField(max_length=1024, blank=True)
+
+    def __str__(self):
+        return self.title
