@@ -65,6 +65,7 @@ def indiv_products(request, product_id):
     """
     product_info = get_object_or_404(Product, pk=product_id)
     reviews = ProductReview.objects.filter(product=product_id)
+    reviews = reviews.order_by(f'-date_posted')
 
     context = {
         'product': product_info,

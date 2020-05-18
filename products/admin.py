@@ -75,6 +75,51 @@ class ProductAdmin(admin.ModelAdmin):
     save_on_top = True
 
 
+class ReviewAdmin(admin.ModelAdmin):
+    readonly_fields = (
+                       'date_posted',
+    )
+
+    fieldsets = [
+        ('User Information', {
+            'fields': [
+                'user',
+                'display_name',
+            ]
+        }),
+        ('Review Information', {
+            'fields': [
+                'date_posted',
+                'title',
+                'product',
+                'rating',
+                'product_review',
+            ]
+        }),
+    ]
+
+    list_display = (
+        'user',
+        'title',
+        'rating',
+        'product',
+        'date_posted',
+    )
+
+    ordering = (
+        '-date_posted',
+    )
+
+    search_fields = (
+        'user',
+        'title',
+    )
+
+    list_filter = (
+        'product',
+    )
+
+
 admin.site.register(ProductType, ProductTypeAdmin)
 admin.site.register(Product, ProductAdmin)
-admin.site.register(ProductReview)
+admin.site.register(ProductReview, ReviewAdmin)

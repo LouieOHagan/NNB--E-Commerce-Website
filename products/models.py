@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 
 
 class ProductType(models.Model):
+    class Meta:
+        verbose_name_plural = 'Product Types'
+
     name = models.CharField(max_length=60)
     friendly_name = models.CharField(max_length=60, blank=True)
     description = models.CharField(max_length=254, blank=True)
@@ -36,12 +39,16 @@ class Product(models.Model):
 
 
 class ProductReview(models.Model):
+    class Meta:
+        verbose_name_plural = 'Product Reviews'
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     display_name = models.CharField(max_length=60, blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     rating = models.IntegerField(blank=False, null=False)
     title = models.CharField(max_length=254)
     product_review = models.TextField(max_length=1024, blank=True)
+    date_posted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
