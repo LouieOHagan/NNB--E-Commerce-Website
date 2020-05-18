@@ -41,7 +41,6 @@ card.addEventListener('change', function (event) {
 let form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function(ev) {
-    // let form = document.getElementById('payment-form');
     ev.preventDefault();
     card.update({ 'disabled': true});
     $('#submit-button').attr('disabled', true);
@@ -102,7 +101,6 @@ form.addEventListener('submit', function(ev) {
             }
         });
     }).fail(function () {
-        // just reload the page, the error will be in django messages
         location.reload();
     })
 });
