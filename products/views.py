@@ -92,6 +92,36 @@ def add_review(request, product_id):
                 return redirect('indiv_products', product_id)
         else:
             form = ProductReview()
-        return redirect('indiv_products', {'form': form})
+
+        context = {
+            'form': form
+        }
+        return redirect('indiv_products', context)
+    else:
+        return redirect('account_login')
+
+
+def edit_review(request, product_id, review_id):
+    if request.user.is_authenticated:
+        product = get_object_or_404(Product, pk=product_id)
+        review = ProductReview.objects.get(product=product, pk=review_id)
+
+        if request.user == review.user:
+            if request.method == 'POST':
+                form = ReviewForm(request.POST, instance=review)
+                if form.is_valid():
+                    data = form.save(commit=False)
+                    data.save()
+                    return redirect('indiv_products', product_id)
+            else:
+                form = ReviewForm(instance=review)
+
+            context = {
+                'form': form,
+                'product': product,
+            }
+            return render(request, 'products/edit_review.html', context)
+        else:
+            return redirect('indiv_products', product_id)
     else:
         return redirect('account_login')
