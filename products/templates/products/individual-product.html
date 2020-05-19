@@ -8,6 +8,7 @@
     <p>This is the product template</p>
 
     <h1>{{ product.name }}</h1>
+    <p><strong>Rating:</strong> {{ review_average }} ({{ reviews_amounts }})</p>
     <p><strong>Product Name:</strong> {{ product.name }}</p>
     <p><strong>Product Category:</strong> {{ product.category }}</p>
     <p><strong>Product Code:</strong> {{ product.product_code }}</p>
@@ -78,7 +79,7 @@
             <li>Rating: {{ review.rating }}</li>
             <li>Title: {{ review.title }}</li>
             <li>Review: {{ review.product_review }}</li>
-            {% if request.user.is_authenticated %}
+            {% if request.user == review.user %}
                 <a href="{% url 'edit_review' product.id review.id %}">Edit Review</a>
                 <a href="{% url 'delete_review' product.id review.id %}" onclick="return confirm('Are you sure you would like to delete this review ?');">Delete Review</a>
             {% endif %}

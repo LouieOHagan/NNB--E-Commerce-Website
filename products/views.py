@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.db.models import Q
+from django.db.models import Q, Avg
 from django.db.models.functions import Lower
 
 from .models import Product, ProductType, ProductReview
@@ -67,9 +67,20 @@ def indiv_products(request, product_id):
     reviews = ProductReview.objects.filter(product=product_id)
     reviews = reviews.order_by(f'-date_posted')
 
+    reviews_amounts = 0
+    for review in reviews:
+        reviews_amounts += 1
+
+    review_average = reviews.aggregate(Avg('rating'))['rating__avg']
+    if review_average is None:
+        review_average = 0
+    review_average = round(review_average * 2)/2
+
     context = {
         'product': product_info,
         'reviews': reviews,
+        'review_average': review_average,
+        'reviews_amounts': reviews_amounts,
     }
 
     return render(request, 'products/individual-product.html', context)
