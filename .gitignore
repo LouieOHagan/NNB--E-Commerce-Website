@@ -7,3 +7,4 @@ htmlcov/
 .theia/
 .gitpod.dockerfile
 .gitpod.yml
+*core.Microsoft*

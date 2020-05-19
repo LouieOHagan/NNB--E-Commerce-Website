@@ -37,3 +37,67 @@
 .btn.focus, .btn:focus {
     box-shadow: none
 }
+
+.all-products {
+    margin: 40px auto;
+}
+
+.product-card {
+    height: 400px;
+    width: 300px;
+    margin: 0 auto 50px;
+}
+
+.product-image img {
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.product-prices {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 3px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    margin-right: 5px;
+    font-size: 16px;
+    color: grey;
+}
+
+
+.current-price {
+    margin-left: 5px;
+}
+
+.product-name {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.bottom-items {
+    margin: 0 auto;
+}
+
+.rating {
+    display: inline-block;
+    margin: 0 25px 0 0;
+    vertical-align: middle;
+}
+
+.more-details {
+    display: inline-block;
+    margin: 0 0 0 25px;
+    color: black;
+    vertical-align: middle;
+}
+
+.more-details:hover {
+    color:  black;
+    text-decoration: none;
+}
+
+.more-details i {
+    padding-left: 4px;
+    vertical-align: initial;
+}
