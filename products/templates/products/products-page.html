@@ -3,74 +3,98 @@
 
 {% block title %}{% for type in product_type %}{{ type.friendly_name }} {% endfor %}- Products Page | NNB{% endblock %}
 
+{% block extra_css %}
+    <!-- Custom Products Page CSS -->
+    <link rel="stylesheet" href="{% static 'products/css/product.css' %}">
+{% endblock %}
+
 {% block content %}
-<h1>Products Page</h1>
-    {% for type in product_type %}  
-        <p><strong>Product Type Name:</strong> {{ type.name }}</p>
-        <p><strong>Product Type Friendly Name:</strong> {{ type.friendly_name }}</p>
-        <p><strong>Product Type Description:</strong> {{ type.description }}</p>
-    {% endfor %}
-    <hr>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {% if sorted_by == "None_None" %}
-                    Sort By:
-                {% elif sorted_by == "price_current_asc" %}
-                    Price Low to High
-                {% elif sorted_by == "-price_current_desc" %}
-                    Price High to Low
-                {% elif sorted_by == "lower_name_asc" %}
-                    Name A to Z
-                {% elif sorted_by == "-lower_name_desc" %}
-                    Name Z to A
-                {% endif %}
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="{% url 'display_products' %}?product_type={% for type in product_type %}{{ type.name }},{% endfor %}">Sort By:</a>
-                <a class="dropdown-item" href="{% url 'display_products' %}?product_type={% for type in product_type %}{{ type.name }},{% endfor %}&sort=price_current&direction=asc">Price Low to High</a>
-                <a class="dropdown-item" href="{% url 'display_products' %}?product_type={% for type in product_type %}{{ type.name }},{% endfor %}&sort=price_current&direction=desc">Price High to Low</a>
-                <a class="dropdown-item" href="{% url 'display_products' %}?product_type={% for type in product_type %}{{ type.name }},{% endfor %}&sort=name&direction=asc">Name A to Z</a>
-                <a class="dropdown-item" href="{% url 'display_products' %}?product_type={% for type in product_type %}{{ type.name }},{% endfor %}&sort=name&direction=desc">Name Z to A</a>
+
+<div class="container-fluid">
+
+    <!-- Page Breadcrumbs -->
+    <div class="row">
+        <div class="col custom-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Products - {% for type in product_type %}{{ type.friendly_name }} {% endfor %}</li>
+            </ol>
+        </div>
+    </div>
+    <!-- / .Page Breadcrumbs -->
+
+    <!-- Sort Products By Button -->
+    <div class="row">
+        <div class="col">
+            <div class="dropdown sort-by-btn">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {% if sorted_by == "price_current_asc" %}
+                        Price Low to High
+                    {% elif sorted_by == "-price_current_desc" %}
+                        Price High to Low
+                    {% elif sorted_by == "lower_name_asc" %}
+                        Name A to Z
+                    {% elif sorted_by == "-lower_name_desc" %}
+                        Name Z to A
+                    {% else %}
+                        Sort By:
+                    {% endif %}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{% url 'display_products' %}?product_type={% for type in product_type %}{{ type.name }},{% endfor %}">Sort By:</a>
+                    <hr>
+                    <a class="dropdown-item" href="{% url 'display_products' %}?product_type={% for type in product_type %}{{ type.name }},{% endfor %}&sort=price_current&direction=asc">Price Low to High</a>
+                    <hr>
+                    <a class="dropdown-item" href="{% url 'display_products' %}?product_type={% for type in product_type %}{{ type.name }},{% endfor %}&sort=price_current&direction=desc">Price High to Low</a>
+                    <hr>
+                    <a class="dropdown-item" href="{% url 'display_products' %}?product_type={% for type in product_type %}{{ type.name }},{% endfor %}&sort=name&direction=asc">Name A to Z</a>
+                    <hr>
+                    <a class="dropdown-item" href="{% url 'display_products' %}?product_type={% for type in product_type %}{{ type.name }},{% endfor %}&sort=name&direction=desc">Name Z to A</a>
+                </div>
             </div>
         </div>
-    <hr>
-    {% for product in products %}
-        <p><strong>Image 1:</strong></p>
-        <img src="{{ product.image_1.url }}" alt="" height="100" width="100">
-        {% if product.image_2 %}
-            <p><strong>Image 2:</strong></p>
-            <img src="{{ MEDIA_URL }}{{ product.image_2.url }}" alt="">
-        {% endif %}
-        {% if product.image_3 %}
-            <p><strong>Image 3:</strong></p>
-            <img src="/media/{{ product.image_3 }}" alt="">
-        {% endif %}
-        {% if product.image_4 %}
-            <p><strong>Image 4:</strong></p>
-            <img src="/media/{{ product.image_4 }}" alt="">
-        {% endif %}
-        {% if product.image_5 %}
-            <p><strong>Image 5:</strong></p>
-            <img src="/media/{{ product.image_5 }}" alt="">
-        {% endif %}
-        <p><strong>Product Name:</strong> {{ product.name }}</p>
-        <p><strong>Product Category:</strong> {{ product.category }}</p>
-        <p><strong>Product Code:</strong> {{ product.product_code }}</p>
-        <p><strong>Product Description:</strong> {{ product.product_description }}</p>
-        <p><strong>Original Product Price:</strong> <s>&euro;{{ product.price_original }}</s></p>
-        <p><strong>Current Product Price:</strong> &euro;{{ product.price_current }}</p>
-        {% if product.in_stock %}
-            {% if product.stock >= 10%}
-                <p><strong>In Stock ? :</strong><span style="color: green;"> In Stock</span></p>
-            {% else %}
-                <p><strong>In Stock ? :</strong><span style="color: orange;"> Low Stock</span></p>
-            {% endif %}
+    </div>
+    <!-- / .Sort Products By Button -->
+
+</div>
+
+{% for product in products %}
+    <p><strong>Image 1:</strong></p>
+    <img src="{{ product.image_1.url }}" alt="" height="100" width="100">
+    {% if product.image_2 %}
+        <p><strong>Image 2:</strong></p>
+        <img src="{{ MEDIA_URL }}{{ product.image_2.url }}" alt="">
+    {% endif %}
+    {% if product.image_3 %}
+        <p><strong>Image 3:</strong></p>
+        <img src="/media/{{ product.image_3 }}" alt="">
+    {% endif %}
+    {% if product.image_4 %}
+        <p><strong>Image 4:</strong></p>
+        <img src="/media/{{ product.image_4 }}" alt="">
+    {% endif %}
+    {% if product.image_5 %}
+        <p><strong>Image 5:</strong></p>
+        <img src="/media/{{ product.image_5 }}" alt="">
+    {% endif %}
+    <p><strong>Product Name:</strong> {{ product.name }}</p>
+    <p><strong>Product Category:</strong> {{ product.category }}</p>
+    <p><strong>Product Code:</strong> {{ product.product_code }}</p>
+    <p><strong>Product Description:</strong> {{ product.product_description }}</p>
+    <p><strong>Original Product Price:</strong> <s>&euro;{{ product.price_original }}</s></p>
+    <p><strong>Current Product Price:</strong> &euro;{{ product.price_current }}</p>
+    {% if product.in_stock %}
+        {% if product.stock >= 10%}
+            <p><strong>In Stock ? :</strong><span style="color: green;"> In Stock</span></p>
         {% else %}
-            <p><strong>In Stock ? :</strong><span style="color: red;"> Out of Stock</span></p>
+            <p><strong>In Stock ? :</strong><span style="color: orange;"> Low Stock</span></p>
         {% endif %}
-        <p><strong>Stock Amount:</strong> {{ product.stock }}</p>
-        <a href="{% url 'indiv_products' product.id %}" class="btn btn-success">View Product</a>
-        <hr>
-    {% endfor %}
+    {% else %}
+        <p><strong>In Stock ? :</strong><span style="color: red;"> Out of Stock</span></p>
+    {% endif %}
+    <p><strong>Stock Amount:</strong> {{ product.stock }}</p>
+    <a href="{% url 'indiv_products' product.id %}" class="btn btn-success">View Product</a>
+    <hr>
+{% endfor %}
 
 {% endblock %}

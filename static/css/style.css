@@ -13,6 +13,7 @@ ul {
 .navigation-colour {
     background: rgba(255, 255, 255, 0.96);
     width: 100%;
+    border-bottom: 2px solid rgba(226, 226, 226, 0.863);
 }
 
 .navigation-sect {

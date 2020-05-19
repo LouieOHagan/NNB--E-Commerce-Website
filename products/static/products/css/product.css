@@ -1,0 +1,39 @@
+/* --- Breadcrumbs */
+.custom-breadcrumb {
+    margin: 0;
+    padding: 0;
+}
+
+.custom-breadcrumb ol {
+    border-radius: 0;
+    background: #f7f7f7;
+    border-bottom: 1px solid #cecece;
+}
+
+/* --- Sort Products by Button */
+.sort-by-btn {
+    text-align: right;
+    margin-right: 50px;
+}
+
+.sort-by-btn button {
+    width: 200px;
+    background: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.sort-by-btn .dropdown-menu {
+    width: 200px;
+    background: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.sort-by-btn .dropdown-menu hr {
+    margin: 5px 0;
+}
+
+.btn.focus, .btn:focus {
+    box-shadow: none
+}
