@@ -1,19 +1,28 @@
+.product-top-sect {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: auto;
+    align-items: center;
+}
+
 /* --- Breadcrumbs */
 .custom-breadcrumb {
     margin: 0;
     padding: 0;
 }
 
-.custom-breadcrumb ol {
+.product-top-sect ol {
     border-radius: 0;
     background: #f7f7f7;
-    border-bottom: 1px solid #cecece;
+    margin-left: 20px;
+    background: none;
 }
 
 /* --- Sort Products by Button */
 .sort-by-btn {
     text-align: right;
-    margin-right: 50px;
+    margin-right: 35px;
 }
 
 .sort-by-btn button {
@@ -37,6 +46,8 @@
 .btn.focus, .btn:focus {
     box-shadow: none
 }
+
+/* --- Product Cards */
 
 .all-products {
     margin: 40px auto;
@@ -87,9 +98,9 @@
 
 .more-details {
     display: inline-block;
-    margin: 0 0 0 25px;
-    color: black;
+    margin: 0 0 0 50px;
     vertical-align: middle;
+    color: black;
 }
 
 .more-details:hover {
@@ -100,4 +111,12 @@
 .more-details i {
     padding-left: 4px;
     vertical-align: initial;
+}
+
+.side-drop::after {
+    display: none;
+}
+
+.side-drop i {
+    font-size: 25px;
 }

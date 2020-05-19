@@ -11,21 +11,20 @@
 {% block content %}
 
 <div class="container-fluid">
-
-    <!-- Page Breadcrumbs -->
+    <!-- Breadcrumbs and Sort By Section -->
     <div class="row">
-        <div class="col custom-breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Products - {% for type in product_type %}{{ type.friendly_name }} {% endfor %}</li>
-            </ol>
-        </div>
-    </div>
-    <!-- / .Page Breadcrumbs -->
+        <div class="col-10 product-top-sect">
 
-    <!-- Sort Products By Button -->
-    <div class="row">
-        <div class="col">
+            <!--  Breadcrumbs -->
+            <div>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Products - {% for type in product_type %}{{ type.friendly_name }} {% endfor %}</li>
+                </ol>
+            </div>
+            <!--  Breadcrumbs -->
+
+            <!-- Sort Products By Button -->
             <div class="dropdown sort-by-btn">
                 <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {% if sorted_by == "price_current_asc" %}
@@ -52,86 +51,50 @@
                     <a class="dropdown-item" href="{% url 'display_products' %}?product_type={% for type in product_type %}{{ type.name }},{% endfor %}&sort=name&direction=desc">Name Z to A</a>
                 </div>
             </div>
+            <!-- / .Sort Products By Button -->
         </div>
     </div>
-    <!-- / .Sort Products By Button -->
+    <!-- / .Breadcrumbs and Sort By Section -->
 
     <div class="row">
         <div class="all-products col-10">
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <div class="card product-card">
-                            <a class="product-image" href="">
-                                <img src="/media/default.png" alt="" height="300" width="300">
+                {% for product in products %}
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <div class="card product-card">
+                            <a class="product-image" href="{% url 'indiv_products' product.id %}">
+                                <img src="{{ product.image_1.url }}" alt="{{ product.name }}" height="298" width="298">
                             </a>
-                            <p class="product-name">Alienware Aurora R9 Gaming Desktop</p>
-                            <p class="product-prices"><span class="old-price">&euro;1199.99</span> <span class="current-price">&euro;999.99</span></p>
+                            <p class="product-name">{{ product.name }}</p>
+                            <p class="product-prices">
+                            {% if product.price_original %}
+                                <span class="old-price">&euro;{{ product.price_original }}</span> 
+                                <span class="current-price">&euro;{{ product.price_current }}</span>
+                            {% else %}
+                                <span class="current-price">&euro;{{ product.price_current }}</span>
+                            {% endif %}
+                            </p>
                             <div class="bottom-items">
-                                <p class="rating">Rating: 4/5</p>
-                                <a class="more-details hvr-icon-wobble-horizontal" href="">View Details <i class="fas fa-angle-right hvr-icon"></i></a>
+                                {% if request.user.is_superuser %}
+                                    <div class="dropdown rating">
+                                        <button class="btn dropdown-toggle side-drop" type="button" id="dropdownMenuButton{{ forloop.counter }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ forloop.counter }}">
+                                            <a class="dropdown-item" href="{% url 'admin:index' %}/products/product/{{ product.id }}/delete/">Delete Product</a>
+                                            <a class="dropdown-item" href="{% url 'admin:index' %}/products/product/{{ product.id }}/change/">Edit Product</a>
+                                        </div>
+                                    </div>
+                                    <a class="more-details hvr-icon-wobble-horizontal" href="{% url 'indiv_products' product.id %}">View Details <i class="fas fa-angle-right hvr-icon"></i></a>
+                                {% else %}
+                                    <a class="more-details hvr-icon-wobble-horizontal" href="{% url 'indiv_products' product.id %}">View Details <i class="fas fa-angle-right hvr-icon"></i></a>
+                                {% endif %}
                             </div>
-
+                        </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <div class="card product-card">
-                        <p>Card</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <div class="card product-card">
-                        <p>Card</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <div class="card product-card">
-                        <p>Card</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-
 </div>
-
-
-{% for product in products %}
-    <p><strong>Image 1:</strong></p>
-    <img src="{{ product.image_1.url }}" alt="" height="100" width="100">
-    {% if product.image_2 %}
-        <p><strong>Image 2:</strong></p>
-        <img src="{{ MEDIA_URL }}{{ product.image_2.url }}" alt="">
-    {% endif %}
-    {% if product.image_3 %}
-        <p><strong>Image 3:</strong></p>
-        <img src="/media/{{ product.image_3 }}" alt="">
-    {% endif %}
-    {% if product.image_4 %}
-        <p><strong>Image 4:</strong></p>
-        <img src="/media/{{ product.image_4 }}" alt="">
-    {% endif %}
-    {% if product.image_5 %}
-        <p><strong>Image 5:</strong></p>
-        <img src="/media/{{ product.image_5 }}" alt="">
-    {% endif %}
-    <p><strong>Product Name:</strong> {{ product.name }}</p>
-    <p><strong>Product Category:</strong> {{ product.category }}</p>
-    <p><strong>Product Code:</strong> {{ product.product_code }}</p>
-    <p><strong>Product Description:</strong> {{ product.product_description }}</p>
-    <p><strong>Original Product Price:</strong> <s>&euro;{{ product.price_original }}</s></p>
-    <p><strong>Current Product Price:</strong> &euro;{{ product.price_current }}</p>
-    {% if product.in_stock %}
-        {% if product.stock >= 10%}
-            <p><strong>In Stock ? :</strong><span style="color: green;"> In Stock</span></p>
-        {% else %}
-            <p><strong>In Stock ? :</strong><span style="color: orange;"> Low Stock</span></p>
-        {% endif %}
-    {% else %}
-        <p><strong>In Stock ? :</strong><span style="color: red;"> Out of Stock</span></p>
-    {% endif %}
-    <p><strong>Stock Amount:</strong> {{ product.stock }}</p>
-    <a href="{% url 'indiv_products' product.id %}" class="btn btn-success">View Product</a>
-    <hr>
-{% endfor %}
-
 {% endblock %}
