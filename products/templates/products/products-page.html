@@ -10,7 +10,7 @@
 
 {% block content %}
 
-<div class="container-fluid">
+<div class="container-fluid push-down">
     <!-- Breadcrumbs and Sort By Section -->
     <div class="row">
         <div class="col-10 product-top-sect">
@@ -19,7 +19,11 @@
             <div>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Products - {% for type in product_type %}{{ type.friendly_name }} {% endfor %}</li>
+                    {% if search_content %}
+                        <li class="breadcrumb-item active" aria-current="page">Search Result</li>
+                    {% else %}
+                        <li class="breadcrumb-item active" aria-current="page">Products - {% for type in product_type %}{{ type.friendly_name }} {% endfor %}</li>
+                    {% endif %}
                 </ol>
             </div>
             <!--  Breadcrumbs -->

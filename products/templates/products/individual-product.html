@@ -4,7 +4,66 @@
 
 {% block title %}{{ product.name }} | NNB {{ product.category|title }}{% endblock %}
 
+{% block extra_css %}
+    <!-- Custom Products Page CSS -->
+    <link rel="stylesheet" href="{% static 'products/css/product.css' %}">
+{% endblock %}
+
 {% block content %}
+
+<div class="container-fluid push-down">
+    <!--  Breadcrumbs -->
+    <div class="row">
+        <div class="col-12 col-md-10 product-top-sect">
+            <div>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'display_products' %}?product_type={{ product.category }}">Products - {{ product.category|title }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!--  / .Breadcrumbs -->
+
+
+    <div class="all-products row">
+        <!-- Product Images -->
+        <div class="col-sm-12 col-md-6">
+            <div id="images">
+                <div class="image-container">
+                    <img id="expandedImg" src="{{ product.image_1.url }}">
+                </div>
+
+                <div class="image-row">
+                    <div class="column" id="first-image">
+                        <img class="small-image" src="{{ product.image_1.url }}" alt="{{ product.name }} Image 1" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img class="small-image" src="{{ product.image_2.url }}" alt="{{ product.name }} Image 2" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img class="small-image" src="{{ product.image_3.url }}" alt="{{ product.name }} Image 3" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img class="small-image" src="{{ product.image_4.url }}" alt="{{ product.name }} Image 4" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img class="small-image" src="{{ product.image_5.url }}" alt="{{ product.name }} Image 5" onclick="myFunction(this);">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / .Product Images -->
+
+        <!-- Product Information -->
+        <div class="col-6">
+            <h1 style="text-align: center;">Product</h1>
+        </div>
+        <!-- / .Product Information -->
+    </div>
+</div>
+
     <p>This is the product template</p>
 
     <h1>{{ product.name }}</h1>
@@ -30,19 +89,19 @@
     <img src="{{ product.image_1.url }}" alt="" height="100" width="100">
     {% if product.image_2 %}
         <p><strong>Image 2:</strong></p>
-        <img src="{{ product.image_2.url }}" alt="">
+        <img src="{{ product.image_2.url }}" alt="" height="100" width="100">
     {% endif %}
     {% if product.image_3 %}
         <p><strong>Image 3:</strong></p>
-        <img src="{{ product.image_3.url }}" alt="">
+        <img src="{{ product.image_3.url }}" alt="" height="100" width="100">
     {% endif %}
     {% if product.image_4 %}
         <p><strong>Image 4:</strong></p>
-        <img src="{{ product.image_4.url }}" alt="">
+        <img src="{{ product.image_4.url }}" alt="" height="100" width="100">
     {% endif %}
     {% if product.image_5 %}
         <p><strong>Image 5:</strong></p>
-        <img src="{{ product.image_5.url }}" alt="">
+        <img src="{{ product.image_5.url }}" alt="" height="100" width="100">
     {% endif %}
 
     {% if product.in_stock %}
@@ -86,4 +145,11 @@
             <br>
         {% endfor %}
     </ul>
+
+    <script>
+        function myFunction(imgs) {
+        var expandImg = document.getElementById("expandedImg");
+        expandImg.src = imgs.src;
+        }
+    </script>
 {% endblock %}

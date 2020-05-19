@@ -30,7 +30,7 @@
         {% block extra_css %} {% endblock %}
     </head>
     <body>
-        <div class="navigation-colour {% block nav_type %}sticky-top{% endblock %}">
+        <div class="navigation-colour fixed-top">
             <nav class="navbar navbar-expand-md">
                 <a class="navbar-brand logo" href="{% url 'home' %}"></a>
                 <button class="navbar-toggler no-border" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,9 +78,6 @@
                                     </li>
                                 {% endif %}
                                 <li class="center-items dropdown">
-                                    <a href="#">EDIT PROFILE</a>
-                                </li>
-                                <li class="center-items dropdown">
                                     <a href="{% url 'account_logout' %}">SIGN OUT</a>
                                 </li>
                             {% else %}
@@ -114,7 +111,6 @@
                                 {% if request.user.is_superuser %}
                                     <a class="dropdown-item" href="{% url 'admin:index' %}">Admin Panel</a>
                                 {% endif %}
-                                    <a class="dropdown-item" href="#">Edit Profile</a>
                                     <a class="dropdown-item" href="{% url 'account_logout' %}">Sign Out</a>
                             {% else %}
                                 <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>

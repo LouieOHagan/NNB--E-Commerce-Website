@@ -120,3 +120,47 @@
 .side-drop i {
     font-size: 25px;
 }
+
+
+/* --- Product Details Images */
+
+#expandedImg {
+    width: 50%;
+    margin: auto;
+    display: block;
+}
+
+#images * {
+    box-sizing: border-box;
+}
+
+.column {
+    width: 15%;
+    padding: 10px;
+    display: inline-block;
+}
+
+.image-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.image-container {
+    position: relative;
+    display: block;
+}
+
+.small-image {
+    width: 100%;
+    opacity: 0.8; 
+    cursor: pointer; 
+}
+
+.small-image:hover {
+    opacity: 1;
+}
+
+#first-image {
+    margin-left: 10%;
+}
