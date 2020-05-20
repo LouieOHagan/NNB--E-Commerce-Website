@@ -3,6 +3,13 @@
 
 {% block title %}{% for type in product_type %}{{ type.friendly_name }} {% endfor %}- Products Page | NNB{% endblock %}
 
+{% block extra_meta %}
+<!-- Open Graph Tags -->
+<meta property="og:title" content="{% for type in product_type %}{{ type.friendly_name }} {% endfor %} in NNB Electrical Ecommerce Store">
+<meta property="og:description" content="{% for type in product_type %}{{ type.description }} {% endfor %}">
+<meta property="og:image" content="/media/logo-black.png">
+{% endblock %}
+
 {% block extra_css %}
     <!-- Custom Products Page CSS -->
     <link rel="stylesheet" href="{% static 'products/css/product.css' %}">

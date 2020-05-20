@@ -230,6 +230,27 @@
     font-size: 21px;
 }
 
+.review-form-item {
+    color: #000;
+    padding: 9px 12px;
+    border: 1px solid rgb(124, 122, 122);
+}
+
+.required {
+    color: rgba(255, 0, 0, 0.801);
+}
+
+.poster-action {
+    font-weight: 600;
+    color: black;
+}
+
+.poster-action:hover {
+    text-decoration: none;
+    color: black;
+}
+
+
 
 /* --------------------------Media Query */
 

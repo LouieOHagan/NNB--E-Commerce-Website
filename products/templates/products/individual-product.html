@@ -4,6 +4,13 @@
 
 {% block title %}{{ product.name }} | NNB {{ product.category|title }}{% endblock %}
 
+{% block extra_meta %}
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="{{ product.name }} | NNB Tablets">
+    <meta property="og:description" content="{{ product.product_description|truncatechars:500 }}">
+    <meta property="og:image" content="{{ product.image_1.url }}">
+{% endblock %}
+
 {% block extra_css %}
     <!-- Custom Products Page CSS -->
     <link rel="stylesheet" href="{% static 'products/css/product.css' %}">
@@ -111,38 +118,63 @@
             </div>
         </div>
     </div>
-</div>
+    <hr>
+    <!-- Add a Review Section -->
+    <div class="row">
+        <div class="col-12 col-lg-10 m-auto">
+            <h2 class="text-center">ADD REVIEW</h2>
+            <form action="{% url 'add_review' product.id %}" method="POST">
+                {% csrf_token %}
+                <label class="mt-2 mb-1" for="display_name">Display Name:</label>
+                <input class="form-control review-form-item" type="text" value="{{ request.user.username }}" id="display_name" name="display_name">
 
-    <h2>Add Review</h2>
-    <form action="{% url 'add_review' product.id %}" method="POST">
-        {% csrf_token %}
+                <label class="mt-2 mb-1" for="rating">Rating (1-5): <span class="required">*</span></label>
+                <input class="form-control quantity review-form-item" type="number" value="0" min="1" max="5" id="rating" name="rating" required>
 
-        <input type="text" placeholder="Display Name" name="display_name">
-        <input type="number" min="1" max="5" placeholder="Rating" name="rating">
-        <input type="text" placeholder="Review Title" name="title">
+                <label class="mt-2 mb-1" for="">Review Title: <span class="required">*</span></label>
+                <input class="form-control review-form-item" type="text" id="title" name="title" required>
 
-        <textarea name="product_review" id="" cols="30" rows="5"></textarea>
+                <label class="mt-2 mb-1" for="product_review">Review Description:</label>
+                <textarea class="form-control review-form-item" id="product_review" name="product_review" rows="4"></textarea>
 
-        <input type="submit" value="Post Review">
-    </form>   
-
-    <ul>
-        {% for review in reviews %}
-            {% if review.display_name %}
-                <li>By: {{ review.display_name }}</li>
+                <input class="btn add-cart-btn" type="submit" value="Post Review">
+            </form>  
+        </div>
+    </div>
+    <!-- / .Add a Review Section -->  
+    <hr>
+    <!-- All Reviews Section -->
+    <div class="row mb-5">
+        <div class="col-12 col-lg-10 m-auto">
+            <h2 class="text-center">PRODUCT REVIEWS</h2>
+            <p>{{ reviews_amounts }} Reviews</p>
+            {% if reviews %}
+                {% for review in reviews %}
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            {{ review.rating }}/5 by {% if review.display_name %}{{ review.display_name }}{% else %}{{ review.user }}{% endif %} on {{ review.date_posted|date:"d/m/y" }}
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ review.title }}</h5>
+                            <p class="card-text">{{ review.product_review }}</p>
+                        </div>
+                        {% if request.user == review.user %}
+                        <div class="card-footer muted">
+                            Post Actions:
+                            <a class="poster-action" href="{% url 'edit_review' product.id review.id %}">Edit Review</a>
+                            OR
+                            <a class="poster-action" href="{% url 'delete_review' product.id review.id %}" onclick="return confirm('Are you sure you would like to delete this review ?');">Delete Review</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
             {% else %}
-                <li>{{ review.user }}</li>
+                <p class="text-center">No customer reviews</p>
             {% endif %}
-            <li>Rating: {{ review.rating }}</li>
-            <li>Title: {{ review.title }}</li>
-            <li>Review: {{ review.product_review }}</li>
-            {% if request.user == review.user %}
-                <a href="{% url 'edit_review' product.id review.id %}">Edit Review</a>
-                <a href="{% url 'delete_review' product.id review.id %}" onclick="return confirm('Are you sure you would like to delete this review ?');">Delete Review</a>
-            {% endif %}
-            <br>
-        {% endfor %}
-    </ul>
+        </div>
+    </div>
+    <!-- / .All Reviews Section -->       
+</div>
 
     <script>
         function myFunction(imgs) {
