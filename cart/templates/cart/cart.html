@@ -4,7 +4,51 @@
 
 {% block title %}Shopping Cart | NNB {% endblock %}
 
+{% block extra_css %}
+    <!-- Custom Cart Page CSS -->
+    <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+{% endblock %}
+
 {% block content %}
+<div class="container-fluid push-down">
+    <div class="row">
+        <div class="col-8 col-lg-8">
+            <h1>Shopping Cart</h1>
+                <p>{{ product_count }} Item(s) in your cart</p>
+            <hr>
+            <form action="" method="POST">
+                    {% csrf_token %}
+                    <input class="form-control qty_input" type="number" min="1" name="quantity">
+                    <input type="submit" value="Update">
+                </form>
+        
+        </div>
+
+        <div class="col-4 col-md-4 order-summary">
+            <h2 class="summary-heading">Order Summary</h2>
+            <p><strong>Cart Total:</strong> &euro;{{ total }}</p>
+            <p><strong>Delivery Cost:</strong> &euro;{{ delivery_cost|floatformat:2 }}</p>
+            <p><strong>Grand Total:</strong> &euro;{{ grand_total|floatformat:2 }}</p>
+            
+            <p>Free Delivery if you spend <strong>20</strong> more</p>
+            
+            <div class="direction-buttons">
+                <a class="btn back-btn hvr-icon-wobble-horizontal" href="{% url 'display_products' %}?product_type=desktops"><i class="fas fa-angle-left hvr-icon"></i> Keep Shopping</a>
+                <a class="btn checkout-btn hvr-icon-wobble-horizontal" href="{% url 'checkout' %}">Checkout <i class="fas fa-angle-right hvr-icon"></i></a>
+            </div>
+        </div>
+    </div>
+
+    
+
+</div>
+
+
+<br>
+<br>
+<hr>
+
+
     <h1>Cart Items</h1>
 
     {% if cart_items %}
@@ -37,6 +81,27 @@
         <p>Cart Item Amount: <strong>{{ product_count }}</strong></p>
     {% endif %}
     <a href="{% url 'checkout' %}">Checkout</a>
+
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
+    <h1>Test</h1>
 
 
 {% endblock %}

@@ -1,0 +1,85 @@
+.order-summary {
+    background: #ebebeb;
+    position: fixed;
+    right: 0;
+    height: 100vh;
+    border-left: 1px solid black
+}
+
+
+.direction-buttons {
+    position: fixed;
+    bottom: 50px;
+    height: 60px;
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.back-btn {
+    background: white;
+    border: 1px solid #000;
+    width: 190px;
+    padding: 20px 0px;
+    text-transform: uppercase;
+}
+
+.back-btn:hover {
+    background: rgb(228, 228, 228);
+}
+
+.checkout-btn {
+    background: #35A65B;
+    border: 1px solid #000;
+    width: 190px;
+    padding: 20px 0;
+    color: white;
+    text-transform: uppercase;
+}
+
+.checkout-btn:hover {
+    color: white;
+    background: #488c5f;
+}
+
+.checkout-btn i {
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.back-btn i {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.summary-heading {
+    text-align: center;
+    margin-top: 30px;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* --------------------------Media Query */
+
+/* Active for screen sizes under 1190px */
+@media (max-width: 1190px) {
+    .direction-buttons {
+        flex-direction: column-reverse;
+        bottom: 80px;
+    }
+    
+    .back-btn {
+        margin-top: 20px;
+    }
+}
+
+/* Active for screen sizes under 992px */
+@media (max-width: 992px) {
+
+    .summary-heading {
+        font-size: 24px;
+    }
+}
