@@ -19,6 +19,23 @@
     background: none;
 }
 
+.breadcrumb {
+    font-size: 15px;
+}
+
+.breadcrumb-item a {
+    color: #000;
+}
+
+.breadcrumb-item a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    content: ">";
+}
+
 /* --- Sort Products by Button */
 .sort-by-btn {
     text-align: right;
@@ -46,6 +63,7 @@
 .btn.focus, .btn:focus {
     box-shadow: none
 }
+
 
 /* --- Product Cards */
 
@@ -92,13 +110,12 @@
 
 .rating {
     display: inline-block;
-    margin: 0 25px 0 0;
+    margin: 0 75px 0 0;
     vertical-align: middle;
 }
 
 .more-details {
     display: inline-block;
-    margin: 0 0 0 50px;
     vertical-align: middle;
     color: black;
 }
@@ -118,14 +135,14 @@
 }
 
 .side-drop i {
-    font-size: 25px;
+    font-size: 24px;
 }
 
 
 /* --- Product Details Images */
 
 #expandedImg {
-    width: 50%;
+    height: 400px;
     margin: auto;
     display: block;
 }
@@ -140,10 +157,9 @@
     display: inline-block;
 }
 
-.image-row:after {
-  content: "";
-  display: table;
-  clear: both;
+.image-row {
+    border-top: 2px solid rgba(217, 217, 217, 0.9);
+    border-bottom: 2px solid rgba(217, 217, 217, 0.9);
 }
 
 .image-container {
@@ -163,4 +179,100 @@
 
 #first-image {
     margin-left: 10%;
+}
+
+.add-cart-btn {
+    background: #35A65B;
+    color: #fafafa;
+    border: 1px solid #35A65B;
+    width: 180px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 9px 12px;
+    margin: 20px 0;
+}
+
+.add-cart-btn:hover {
+    background: #488c5f;
+    border: 1px solid #488c5f;
+    color: #fafafa;
+}
+
+.quantity {
+    width: 180px;
+    color: #000;
+    padding: 9px 12px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.availablity span {
+    font-weight: bold;
+    color: #000;
+}
+
+#avail-in {
+    color: #488c5f;
+}
+
+#avail-low {
+    color: #ff9633;
+}
+
+#avail-out {
+    color: #ff2e2e;
+}   
+
+#product-deat-price,
+.current-price-single {
+    font-weight: 600;
+    font-size: 21px;
+}
+
+
+/* --------------------------Media Query */
+
+/* Active for screen sizes under 992px */
+@media (max-width: 992px) {
+    #expandedImg {
+        height: 375px;
+    }
+
+    #first-image {
+        margin-left: 0;
+    }
+
+    .column {
+        width: 19%;
+    }
+
+}
+
+/* Active for screen sizes under 576px */
+@media (max-width:576px) {
+    #expandedImg {
+        height: 300px;
+    }
+
+    .column {
+        width: 18%;
+        padding: 7px;
+    }
+
+}
+
+/* Active for screen sizes under 350px */
+@media (max-width: 350px) {
+    #expandedImg {
+        height: 200px;
+    }
+}
+
+
+/* Active for screen sizes under 292px */
+@media (max-width:292px) {
+    #expandedImg {
+        height: 150px;
+    }
 }
