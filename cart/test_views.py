@@ -14,7 +14,9 @@ class TestViews(TestCase):
                                          product_code='1234',
                                          product_description='Test',
                                          price_current=123)
-        response = self.client.post(f'/cart/add/{product.id}/', {'quantity': 1, 'redirect_url': f'/products/{product.id}/'})
+        response = self.client.post(f'/cart/add/{product.id}/', {
+            'quantity': 1,
+            'redirect_url': f'/products/{product.id}/'})
         self.assertRedirects(response, f'/products/{product.id}/')
 
     def test_update_cart(self):
@@ -32,11 +34,17 @@ class TestViews(TestCase):
         self.assertEqual(cart['1'], 3)
         self.assertRedirects(response, f'/cart/')
 
-    # def test_remove_item_from_cart(self):
-    #     product = Product.objects.create(name='Test Product',
-    #                                      product_code='1234',
-    #                                      product_description='Test',
-    #                                      price_current=123)
-    #     response = self.client.get(f'/cart/remove/{product.id}/')
-    #     self.assertEqual(self.client.session.pop(f'{product.id}'))
-    #     self.assertRedirects(response, f'/cart/')
+    def test_remove_item_from_cart(self):
+        product = Product.objects.create(name='Test Product',
+                                         product_code='1234',
+                                         product_description='Test',
+                                         price_current=123)
+        self.client.post(f'/cart/add/{product.id}/', {
+            'quantity': 1,
+            'redirect_url': f'/products/{product.id}/'})
+
+        response = self.client.get(f'/cart/remove/{product.id}/')
+        cart = self.client.session['cart']
+
+        self.assertEqual(cart, {})
+        self.assertRedirects(response, f'/cart/')
