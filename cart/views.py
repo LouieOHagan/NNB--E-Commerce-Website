@@ -40,7 +40,7 @@ def update_cart(request, item_id):
 
     cart = request.session.get('cart', {})
 
-    if item_id in list(cart.keys()):
+    if quantity > 0:
         cart[item_id] = quantity
     else:
         cart.pop(item_id)

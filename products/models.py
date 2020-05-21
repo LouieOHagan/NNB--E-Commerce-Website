@@ -43,11 +43,11 @@ class ProductReview(models.Model):
         verbose_name_plural = 'Product Reviews'
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    display_name = models.CharField(max_length=60, blank=True)
+    display_name = models.CharField(max_length=60, blank=True, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     rating = models.IntegerField(blank=False, null=False)
     title = models.CharField(max_length=254)
-    product_review = models.TextField(max_length=1024, blank=True)
+    product_review = models.TextField(max_length=1024, blank=True, null=True)
     date_posted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
