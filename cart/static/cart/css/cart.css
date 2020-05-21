@@ -62,6 +62,57 @@
     text-transform: uppercase;
 }
 
+/* ---  */
+
+.cart-top {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.cart-top p {
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.top-seperator {
+    margin-top: 8px;
+    border-bottom: 1px solid black;
+}
+
+.product-row {
+    padding: 20px 0;
+    border-bottom: 1px solid black;
+    margin: 20px 0px;
+}
+
+.update-qty {
+    width: 70px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.btn-update-qty {
+    margin: auto;
+    display: block;
+}
+
+.cart-item-name {
+    color: black;
+}
+
+.cart-item-name:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.remove-item-btn a i,
+.remove-item-btn a i:hover {
+    color: black;
+}
+
+
 /* --------------------------Media Query */
 
 /* Active for screen sizes under 1190px */
@@ -70,7 +121,7 @@
         flex-direction: column-reverse;
         bottom: 80px;
     }
-    
+
     .back-btn {
         margin-top: 20px;
     }
@@ -81,5 +132,35 @@
 
     .summary-heading {
         font-size: 24px;
+    }
+}
+
+/* Active for screen sizes under 767px */
+/* Added to remove big white space at bottom of screen on standard iPad due to Bootstrap breakpoints being 1px off */
+@media (max-width: 767px) {
+    /* --- Footer */
+    .order-summary {
+        border-left: none;
+        border-top: 1px solid black;
+        background: #ebebeb;
+        position: fixed;
+        bottom: 0;
+        height: 10vh;
+    }
+
+    .summary-heading,
+    .back-btn,
+    .cart-total,
+    .deliv-total {
+        display: none;
+    }
+
+    .grand-total {
+        margin: 30px 0;
+    }
+
+    .direction-buttons {
+        bottom: 10px;
+        right: 0;
     }
 }

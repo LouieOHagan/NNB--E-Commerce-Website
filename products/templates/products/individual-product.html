@@ -108,7 +108,7 @@
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         {% else %}
                             <input class="form-control quantity" type="number" value="0" min="1" max="{{ product.stock }}" name="quantity" disabled>
-                            <button type="button" class="btn add-cart-btn" disabled>Out of Stock</button>
+                            <button type="button" class="btn add-cart-btn disabled-btn" disabled>Out of Stock</button>
                         {% endif %}
                     </form>
                     <p><strong>Description:</strong> {{ product.product_description|linebreaksbr  }}</p>

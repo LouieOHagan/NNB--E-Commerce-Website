@@ -12,96 +12,96 @@
 {% block content %}
 <div class="container-fluid push-down">
     <div class="row">
-        <div class="col-8 col-lg-8">
-            <h1>Shopping Cart</h1>
+        <div class="col-12 col-md-8">
+
+            <!-- Cart Page Header -->
+            <div class="cart-top">
+                <h1>Shopping Cart</h1>
                 <p>{{ product_count }} Item(s) in your cart</p>
-            <hr>
-            <form action="" method="POST">
-                    {% csrf_token %}
-                    <input class="form-control qty_input" type="number" min="1" name="quantity">
-                    <input type="submit" value="Update">
-                </form>
-        
+            </div>
+            <hr class="top-seperator">
+            <!-- / .Cart Page Header -->
+
+            <!-- Cart Items Section -->
+            {% if cart_items %}
+
+                <!-- Cart Items Section Titles -->
+                <div class="row product-row p-0 m-0">
+                    <div class="col-3">
+                        <p>Image</p>
+                    </div>
+                    <div class="col-3">
+                        <p>Product</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="text-center">Qty</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="text-center">Price</p>
+                    </div>
+                </div>
+                <!-- / .Cart Items Section Titles -->
+
+                <!-- Cart Items -->
+                {% for item in cart_items %}
+                    <div class="row product-row">
+                        <div class="col-3">
+                            <a href="{% url 'indiv_products' item.product.id %}">
+                                <img src="/media/{{ item.product.image_1 }}" alt="{{ item.product.image_1 }}" height="100" width="100">
+                            </a>
+                        </div>
+                        <div class="col-3">
+                            <a class="cart-item-name" href="{% url 'indiv_products' item.product.id %}">
+                                <p>{{ item.product.name }}</p>
+                            </a>
+                        </div>
+                        <div class="col-2">
+                            <form action="{% url 'update_cart' item.item_id %}" method="POST">
+                                {% csrf_token %}
+                                <input class="form-control update-qty" type="number" value="{{ item.quantity }}" min="1" max="{{ item.product.stock }}" name="quantity" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+                                <input class="btn btn-update-qty" type="submit" value="Update">
+                            </form>
+                        </div>
+                        <div class="col-3">
+                            <p class="text-center">&euro;{{ item.product.price_current }}</p>
+                        </div>
+                        <div class="col-1 remove-item-btn">
+                            <a class="d-block text-center" href="{% url 'remove_cart_item' item.item_id %}"><i class="fas fa-times"></i></a>
+                        </div>
+                    </div>
+                {% endfor %}
+                <!-- / .Cart Items -->
+
+            {% else %}
+                <p>Your cart is currently empty</p>
+            {% endif %}
+            <!-- / .Cart Items Section -->
+
         </div>
 
-        <div class="col-4 col-md-4 order-summary">
+        <!-- Fixed Order Summary Section -->
+        <div class="col-12 col-md-4 order-summary">
             <h2 class="summary-heading">Order Summary</h2>
-            <p><strong>Cart Total:</strong> &euro;{{ total }}</p>
-            <p><strong>Delivery Cost:</strong> &euro;{{ delivery_cost|floatformat:2 }}</p>
-            <p><strong>Grand Total:</strong> &euro;{{ grand_total|floatformat:2 }}</p>
+            <p class="cart-total"><strong>Cart Total:</strong> &euro;{{ total }}</p>
+            <p class="deliv-total"><strong>Delivery Cost:</strong> &euro;{{ delivery_cost|floatformat:2 }}</p>
+            <p class="grand-total"><strong>Grand Total:</strong> &euro;{{ grand_total|floatformat:2 }}</p>
             
-            <p>Free Delivery if you spend <strong>20</strong> more</p>
+            {% if for_free_delivery %}
+                <p>Free Delivery if you spend <strong>{{ for_free_delivery }}</strong> more</p>
+            {% endif %}
             
             <div class="direction-buttons">
                 <a class="btn back-btn hvr-icon-wobble-horizontal" href="{% url 'display_products' %}?product_type=desktops"><i class="fas fa-angle-left hvr-icon"></i> Keep Shopping</a>
-                <a class="btn checkout-btn hvr-icon-wobble-horizontal" href="{% url 'checkout' %}">Checkout <i class="fas fa-angle-right hvr-icon"></i></a>
+                {% if cart_items %}
+                    <a class="btn checkout-btn hvr-icon-wobble-horizontal" href="{% url 'checkout' %}">Checkout <i class="fas fa-angle-right hvr-icon"></i></a>
+                {% else %}
+                    <button class="btn checkout-btn disabled-btn" disabled>Checkout <i class="fas fa-angle-right hvr-icon"></i></button>
+                {% endif %}
             </div>
         </div>
+        <!-- / .Fixed Order Summary Section -->
+
     </div>
-
-    
-
 </div>
-
-
-<br>
-<br>
-<hr>
-
-
-    <h1>Cart Items</h1>
-
-    {% if cart_items %}
-        {% for item in cart_items %}
-            <img src="/media/{{ item.product.image_1 }}" alt="{{ item.product.image_1 }}" height="100" width="100">
-            <p><strong>Product Name:</strong> {{ item.product.name }}</p>
-            <p><strong>Product Code:</strong> {{ item.product.product_code }}</p>
-            <p><strong>Price Each:</strong> &euro;{{ item.product.price_current }}</p>
-            <form action="{% url 'update_cart' item.item_id %}" method="POST">
-                {% csrf_token %}
-                <input class="form-control qty_input" type="number" value="{{ item.quantity }}" min="1" max="{{ product.stock }}" name="quantity" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-                <input type="submit" value="Update">
-            </form>
-            <a href="{% url 'remove_cart_item' item.item_id %}">Remove</a>
-            <p><strong>Sub Total:</strong> &euro;{{ item.product.price_current | multiply:item.quantity }}</p>
-
-            {% if for_free_delivery %}
-                Free Delivery if you spend <strong>{{ for_free_delivery }}</strong> more
-            {% endif %}
-            <hr>
-        {% endfor %}
-
-        <p>Cart Item Amount: <strong>{{ product_count }}</strong></p>
-
-        <p><strong>Items Total:</strong> &euro;{{ total }}</p>
-        <p><strong>Delivery Cost:</strong> &euro;{{ delivery_cost|floatformat:2 }}</p>
-        <p><strong>Grand Total:</strong> &euro;{{ grand_total|floatformat:2 }}</p>
-    {% else %}
-        <p>Your cart is currently empty</p>
-        <p>Cart Item Amount: <strong>{{ product_count }}</strong></p>
-    {% endif %}
-    <a href="{% url 'checkout' %}">Checkout</a>
-
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-    <h1>Test</h1>
-
 
 {% endblock %}

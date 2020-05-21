@@ -14,8 +14,14 @@ ul {
     padding: 0;
 }
 
+/* -------------------------------- Site Wide Classes */
+
 .push-down {
     margin-top: 67px;
+}
+
+.disabled-btn {
+    cursor: no-drop;
 }
 
 /* -------------------------------- Navigation Bar */
