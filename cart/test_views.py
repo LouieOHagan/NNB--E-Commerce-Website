@@ -22,8 +22,12 @@ class TestViews(TestCase):
                                          product_code='1234',
                                          product_description='Test',
                                          price_current=123)
-        self.client.post(f'/cart/add/{product.id}/', {'quantity': 1, 'redirect_url': f'/products/{product.id}/'})
-        response = self.client.post(f'/cart/update/{product.id}/', {'quantity': 3,})
+        self.client.post(f'/cart/add/{product.id}/', {
+            'quantity': 1,
+            'redirect_url': f'/products/{product.id}/'})
+        response = self.client.post(f'/cart/update/{product.id}/', {
+            'quantity': 3
+            })
         cart = self.client.session['cart']
         self.assertEqual(cart['1'], 3)
         self.assertRedirects(response, f'/cart/')
