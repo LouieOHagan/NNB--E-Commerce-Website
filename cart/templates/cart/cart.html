@@ -76,7 +76,7 @@
                     <div class="row product-row">
                         <div class="col-12 col-sm-3">
                             <a href="{% url 'indiv_products' item.product.id %}">
-                                <img src="/media/{{ item.product.image_1 }}" alt="{{ item.product.image_1 }}" height="100" width="100">
+                                <img src="{{ item.product.image_1.url }}" alt="{{ item.product.name }}" height="100" width="100">
                             </a>
                         </div>
                         <div class="col-12 col-sm-3">
