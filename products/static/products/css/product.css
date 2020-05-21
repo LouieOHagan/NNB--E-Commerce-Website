@@ -236,6 +236,16 @@
     border: 1px solid rgb(124, 122, 122);
 }
 
+.review-rating {
+    width: 180px;
+    text-align: center;
+    margin-left: 0 !important;
+}
+
+.review-row {
+    margin-bottom: 3rem;
+}
+
 .required {
     color: rgba(255, 0, 0, 0.801);
 }
@@ -268,6 +278,45 @@
         width: 19%;
     }
 
+}
+
+/* Active for screen sizes under 767px */
+@media (max-width: 767px) {
+    /* --- Navigation Bar */
+    .add-cart-form {
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        left: 0px;
+        z-index: 999;
+        height: 10vh;
+        border-top: 1px solid black;
+        background: #ebebeb;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .add-cart-btn {
+        width: 180px;
+        padding: 15px 12px;
+        margin: 20px;
+    }
+
+    .quantity {
+        width: 180px;
+        color: #000;
+        padding: 15px 10px;
+        border: 1px solid black;
+        text-align: center;
+        height: 54px;
+        margin: 20px;
+    }
+
+    .review-row {
+        margin-bottom: 8rem!important;
+    }
 }
 
 /* Active for screen sizes under 576px */

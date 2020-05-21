@@ -3,9 +3,15 @@
     position: fixed;
     right: 0;
     height: 100vh;
-    border-left: 1px solid black
+    border-left: 1px solid black;
+    text-align: center;
 }
 
+.cart-total,
+.deliv-total,
+.grand-total {
+    margin: 30px 0;
+}
 
 .direction-buttons {
     position: fixed;
@@ -149,9 +155,9 @@
     }
 
     .summary-heading,
-    .back-btn,
     .cart-total,
-    .deliv-total {
+    .deliv-total,
+    .grand-total {
         display: none;
     }
 
@@ -162,5 +168,47 @@
     .direction-buttons {
         bottom: 10px;
         right: 0;
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .checkout-btn {
+        padding: 15px 2px;
+        color: white;
+        text-transform: uppercase;
+        font-weight: 700;
+        border: 1px solid #35A65B;
+    }  
+
+    .back-btn {
+        padding: 15px 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin: 0;
+    } 
+
+    .main-cart {
+        margin-bottom: 7rem;
+    }
+}
+
+/* Active for screen sizes under 576px */
+@media (max-width:576px) {
+    .product-row {
+        text-align: center;
+    }
+
+    .remove-item-btn {
+        position: absolute;
+        right: 45px;
+    }
+
+    .cart-top {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .costs-sum {
+        border-bottom: none;
     }
 }

@@ -12,31 +12,60 @@
 {% block content %}
 <div class="container-fluid push-down">
     <div class="row">
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-8 main-cart">
 
             <!-- Cart Page Header -->
             <div class="cart-top">
                 <h1>Shopping Cart</h1>
                 <p>{{ product_count }} Item(s) in your cart</p>
             </div>
-            <hr class="top-seperator">
+            <hr class="d-none d-sm-block top-seperator">
             <!-- / .Cart Page Header -->
 
             <!-- Cart Items Section -->
             {% if cart_items %}
+                <div>
+                    <!-- Order Price Summary Titles for Mobile -->
+                    <div class="d-md-none text-center font-weight-bold row product-row p-0 mb-2">
+                        <div class="col-4">
+                            <p>Cart Total</p>
+                        </div>
+                        <div class="col-4">
+                            <p>Delivery Cost</p>
+                        </div>
+                        <div class="col-4">
+                            <p class="text-center">Grand Total</p>
+                        </div>
+                    </div>
+                    <!-- / .Order Price Summary Titles for Mobile  -->
+
+                     <!-- Price Breakdown for Mobile   -->
+                    <div class="d-md-none text-center row product-row p-0 mb-2 costs-sum">
+                        <div class="col-4">
+                            <p>&euro;{{ total }}</p>
+                        </div>
+                        <div class="col-4">
+                            <p>&euro;{{ delivery_cost|floatformat:2 }}</p>
+                        </div>
+                        <div class="col-4">
+                            <p class="text-center">&euro;{{ grand_total|floatformat:2 }}</p>
+                        </div>
+                    </div>
+                    <!-- / .Price Breakdown for Mobile  -->
+                </div>
 
                 <!-- Cart Items Section Titles -->
-                <div class="row product-row p-0 m-0">
-                    <div class="col-3">
+                <div class="row font-weight-bold product-row p-0 m-0">
+                    <div class="d-none d-sm-block col-3">
                         <p>Image</p>
                     </div>
-                    <div class="col-3">
+                    <div class="d-none d-sm-block col-3">
                         <p>Product</p>
                     </div>
-                    <div class="col-2">
+                    <div class="d-none d-sm-block col-2">
                         <p class="text-center">Qty</p>
                     </div>
-                    <div class="col-3">
+                    <div class="d-none d-sm-block col-3">
                         <p class="text-center">Price</p>
                     </div>
                 </div>
@@ -45,24 +74,24 @@
                 <!-- Cart Items -->
                 {% for item in cart_items %}
                     <div class="row product-row">
-                        <div class="col-3">
+                        <div class="col-12 col-sm-3">
                             <a href="{% url 'indiv_products' item.product.id %}">
                                 <img src="/media/{{ item.product.image_1 }}" alt="{{ item.product.image_1 }}" height="100" width="100">
                             </a>
                         </div>
-                        <div class="col-3">
+                        <div class="col-12 col-sm-3">
                             <a class="cart-item-name" href="{% url 'indiv_products' item.product.id %}">
                                 <p>{{ item.product.name }}</p>
                             </a>
                         </div>
-                        <div class="col-2">
+                        <div class="col-12 col-sm-2">
                             <form action="{% url 'update_cart' item.item_id %}" method="POST">
                                 {% csrf_token %}
                                 <input class="form-control update-qty" type="number" value="{{ item.quantity }}" min="1" max="{{ item.product.stock }}" name="quantity" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
                                 <input class="btn btn-update-qty" type="submit" value="Update">
                             </form>
                         </div>
-                        <div class="col-3">
+                        <div class="col-12 col-sm-3">
                             <p class="text-center">&euro;{{ item.product.price_current }}</p>
                         </div>
                         <div class="col-1 remove-item-btn">
@@ -76,6 +105,8 @@
                 <p>Your cart is currently empty</p>
             {% endif %}
             <!-- / .Cart Items Section -->
+
+
 
         </div>
 
