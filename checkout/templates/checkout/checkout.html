@@ -5,13 +5,157 @@
 {% block title %}Checkout | NNB {% endblock %}
 
 {% block extra_css %}
-    <!-- Custom Checkotu Page CSS -->
+    <!-- Custom Checkout Page CSS -->
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
+    <!-- Custom Cart Page CSS -->
+    <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
 {% endblock %}
 
 {% block content %}
+<div class="container-fluid push-down">
+    <div class="row">
+        <div class="col-12 col-md-8 main-cart">
+
+            <!-- Cart Page Header -->
+            <div class="cart-top">
+                <h1>Checkout Page</h1>
+                <p>{{ product_count }} Item(s) in your cart</p>
+            </div>
+            <hr class="d-none d-sm-block top-seperator">
+            <!-- / .Cart Page Header -->
+
+            <!-- Cart Items Section -->
+                <div>
+                    <!-- Order Price Summary Titles for Mobile -->
+                    <div class="d-md-none text-center font-weight-bold row product-row p-0 mb-2">
+                        <div class="col-4">
+                            <p>Cart Total</p>
+                        </div>
+                        <div class="col-4">
+                            <p>Delivery Cost</p>
+                        </div>
+                        <div class="col-4">
+                            <p class="text-center">Grand Total</p>
+                        </div>
+                    </div>
+                    <!-- / .Order Price Summary Titles for Mobile  -->
+
+                     <!-- Price Breakdown for Mobile   -->
+                    <div class="d-md-none text-center row product-row p-0 mb-2 costs-sum">
+                        <div class="col-4">
+                            <p>&euro;{{ total }}</p>
+                        </div>
+                        <div class="col-4">
+                            <p>&euro;{{ delivery_cost|floatformat:2 }}</p>
+                        </div>
+                        <div class="col-4">
+                            <p class="text-center">&euro;{{ grand_total|floatformat:2 }}</p>
+                        </div>
+                    </div>
+                    <!-- / .Price Breakdown for Mobile  -->
+                </div>
+
+
+                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                {% csrf_token %}
+
+                    <h5>Details</h5>
+                    {{ order_form.full_name | as_crispy_field }}
+                    {{ order_form.email_address | as_crispy_field }}
+
+                    <h5>Delivery</h5>
+                    {{ order_form.street_address1 | as_crispy_field }}
+                    {{ order_form.street_address2 | as_crispy_field }}
+                    {{ order_form.town_or_city | as_crispy_field }}
+                    {{ order_form.county | as_crispy_field }}
+                    {{ order_form.postcode | as_crispy_field }}
+                    {{ order_form.country | as_crispy_field }}
+                    
+
+                    <h5>Payment</h5>
+                    <!-- A stripe card element will go here -->
+
+                    <!-- Used to display form errors -->
+
+                    <!-- A stripe card element will go here -->
+                    <div class="mb-3" id="card-element"></div>
+                    <!-- Used to display form errors -->
+                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                    <!-- Pass the client secret to the view so we can get the payment intent -->
+                    <input type="hidden" value="{{ client_secret }}" name="client_secret"> 
+                        
+                    <a class="btn back-btn hvr-icon-wobble-horizontal" href="{% url 'view_cart' %}">
+                        <span><i class="fas fa-angle-left hvr-icon"></i> Adjust Bag</span>
+                    </a>
+                    <button class="btn checkout-btn hvr-icon-wobble-horizontal" id="submit-button">
+                        <span>Complete Order <i class="fas fa-angle-right hvr-icon"></i></span>
+                    </button>
+                </form>
+        </div>
+        
+
+
+        <!-- Fixed Order Summary Section -->
+        <div class="col-12 col-md-4 order-summary overflow-auto">
+            <h2 class="summary-heading">Order Summary</h2>
+            {% for item in cart_items %}
+                <img class="text-center border border-dark mb-3" src="{{ item.product.image_1.url }}" alt="{{ item.product.image_1 }}" height="100" width="100">
+                <p>x {{ item.quantity }} {{ item.product.name }}</p>
+                <p>&euro;{{ item.product.price_current }} Each</p>
+                <p>Subtotal:  &euro;{{ item.product.price_current | multiply:item.quantity }}</p>
+                <hr>
+            {% endfor %}
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <h1>test</h1>
+            <p class="cart-total"><strong>Cart Total:</strong> &euro;{{ total }}</p>
+            <p class="deliv-total"><strong>Delivery Cost:</strong> &euro;{{ delivery_cost|floatformat:2 }}</p>
+            <p class="grand-total"><strong>Grand Total:</strong> &euro;{{ grand_total|floatformat:2 }}</p>
+            
+            {% if for_free_delivery %}
+                <p>Free Delivery if you spend <strong>{{ for_free_delivery }}</strong> more</p>
+            {% endif %}
+            
+            <!-- <div class="direction-buttons">
+                <a class="btn back-btn hvr-icon-wobble-horizontal" href="{% url 'display_products' %}?product_type=desktops"><i class="fas fa-angle-left hvr-icon"></i> Keep Shopping</a>
+                {% if cart_items %}
+                    <a class="btn checkout-btn hvr-icon-wobble-horizontal" href="{% url 'checkout' %}">Checkout <i class="fas fa-angle-right hvr-icon"></i></a>
+                {% else %}
+                    <button class="btn checkout-btn disabled-btn" disabled>Checkout <i class="fas fa-angle-right hvr-icon"></i></button>
+                {% endif %}
+            </div> -->
+        </div>
+        <!-- / .Fixed Order Summary Section -->
+
+    </div>
+</div>
+<div id="loading-overlay">
+    <h1 class="loading-spinner">
+        <span class="icon">
+            <i class="fas fa-3x fa-spinner fa-spin"></i>
+        </span>
+    </h1>
+    <h3 class="loading-spinner">Processing Order...</h3>
+</div> 
+
+
+
+
+
+
+
     <div>
-        <h1>Checkout Page</h1>
+        <!-- <h1>Checkout Page</h1>
 
         <form action="{% url 'checkout' %}" method="POST" id="payment-form">
         {% csrf_token %}
@@ -30,16 +174,10 @@
             
 
             <h5>Payment</h5>
-            <!-- A stripe card element will go here -->
-
-            <!-- Used to display form errors -->
 
             <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
-            <!-- A stripe card element will go here -->
             <div class="mb-3" id="card-element"></div>
-            <!-- Used to display form errors -->
             <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-            <!-- Pass the client secret to the view so we can get the payment intent -->
             <input type="hidden" value="{{ client_secret }}" name="client_secret"> 
                 
             <a href="{% url 'view_cart' %}">
@@ -75,7 +213,7 @@
             </span>
         </h1>
         <h3 class="loading-spinner">Processing Order...</h3>
-    </div>
+    </div> -->
 {% endblock %}
 
 {% block extra_javascript %} 

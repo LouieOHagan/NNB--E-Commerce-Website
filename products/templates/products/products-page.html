@@ -92,8 +92,8 @@
                                             <i class="fas fa-ellipsis-h"></i>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ forloop.counter }}">
-                                            <a class="dropdown-item" href="{% url 'admin:index' %}/products/product/{{ product.id }}/delete/">Delete Product</a>
-                                            <a class="dropdown-item" href="{% url 'admin:index' %}/products/product/{{ product.id }}/change/">Edit Product</a>
+                                            <a class="dropdown-item" href="{% url 'admin:index' %}products/product/{{ product.id }}/delete/">Delete Product</a>
+                                            <a class="dropdown-item" href="{% url 'admin:index' %}products/product/{{ product.id }}/change/">Edit Product</a>
                                         </div>
                                     </div>
                                     <a class="more-details hvr-icon-wobble-horizontal" href="{% url 'indiv_products' product.id %}">View Details <i class="fas fa-angle-right hvr-icon"></i></a>
