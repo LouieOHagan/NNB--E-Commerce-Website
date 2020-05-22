@@ -32,6 +32,8 @@ Coverage was used to generate a report of the tests which achieved the following
     - 82% test coverage, 716 statements overall, tested 590 statements, 126 statements missed
 	- Last Updated 2:41pm on 22/5/2020
 
+- Overall Coverage GIF can be found [Here]()
+
 
 ### Further Testing
 - The search bar was becoming visible properly however when trying to close the search bar it would start to transition but then would just snap/hide straight away

@@ -1,11 +1,11 @@
 
 <h1 align="center">NNB Responsive E-Commerce Website Project</h1>
 
-Navigation Buttons
+NNB is an ecommerce store selling general electronic devices. The main part of their product assortment is prebuilt Desktop PC’s, laptops and mobile phones but also stock an 
+assortment of accessories for electronic devices.
 
-Project Description
-
-Project Showcase
+Users are welcomed on the home page with an interactive image carousel styled slider to offer the users a link to check out items in the 3 main categories of the ecommerce store, 
+tablets, laptops and mobile phones. There will also be a search bar with search functionality for users to search up specific items they are interested in. 
 
 ## User Experience (UX)
 
@@ -36,6 +36,81 @@ Project Showcase
 
 ## Database Schema
 
+### Product App Models
+
+#### ProductType
+
+```
+    'id': ID,
+    'name': '...',
+    'friendly_name': '...',
+    'description': '...',
+```
+
+#### Product
+
+```
+    'id': ID,
+    'category': '...',
+    'name': '...',
+    'product_code': '...',
+    'product_description': '...',
+    'price_original': '...',
+    'price_current': '...',
+    'in_stock': '...',
+    'stock': '...',
+    'image_1': '...',
+    'image_2': '...',
+    'image_3': '...',
+    'image_4': '...',
+    'image_5': '...',
+```
+
+#### ProductReview
+```
+    'id': ID,
+    'user': '...',
+    'display_name': '...',
+    'product': '...',
+    'rating': '...',
+    'title': '...',
+    'product_review': '...',
+    'date_posted': '...',
+```
+
+### Checkout App Models
+
+### Order
+```
+    'id': ID,
+    'order_number': '...',
+    'full_name': '...',
+    'email_address': '...',
+    'street_address1': '...',
+    'street_address2': '...',
+    'town_or_city': '...',
+    'county': '...',
+    'postcode': '...',
+    'country': '...',
+    'order_date': '...',
+    'total': '...',
+    'delivery_cost': '...',
+    'grand_total': '...',
+    'original_cart': '...',
+    'stripe_pid': '...',
+```
+
+### OrderProduct
+```
+    'id': ID,
+    'order': '...',
+    'product': '...',
+    'quantity': '...',
+    'product_cost': '...',
+```
+
+
+
 ## Technologies Used
 
 ### Languages Used
@@ -48,6 +123,8 @@ Project Showcase
 ### Frameworks, Libraries & Programs Used
 1. [Django 3.0:](https://www.djangoproject.com/)
     - Django 3.0 was the primary framework used that the website was built off of.
+1. [PostgreSQL:](https://www.postgresql.org/)
+    - PostgreSQL was the database used for production in Heroku
 1. [Heroku:](https://www.heroku.com/home)
     - Heroku was used deploy the website.
 1. [Stripe:](https://stripe.com/)
