@@ -85,6 +85,8 @@ Project Showcase
 
 ## Testing
 
+**Note:** All Testing Information can be located in seperate [TESTING.MD File](https://github.com/LouieOHagan/NNB-E-Commerce-Website/blob/master/TESTING.md) due to length of content.
+
 ## Deployment
 
 I took the following steps to deploy the project successfully to Heroku.
