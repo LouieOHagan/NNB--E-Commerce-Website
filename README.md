@@ -9,8 +9,6 @@ tablets, laptops and mobile phones. There will also be a search bar with search 
 
 ## User Experience (UX)
 
-- ### User stories
-
 - ### Design    
     - Home page
         - Landing page part inspired by Teslas website
@@ -32,9 +30,8 @@ tablets, laptops and mobile phones. There will also be a search bar with search 
         - Colour used #35a65b and hover colour is #488c5f as it is monochromatic according to sessions.edu
             - Used this link https://www.sessions.edu/color-calculator/
 
-
 * ### Wireframes
-    - All Wireframes in PDF Format can be found [here](https://github.com/LouieOHagan/NNB-E-Commerce-Website/blob/master/README-ASSETS/wireframes.pdf)
+    - Basic Wireframes in PDF Format can be found [here](https://github.com/LouieOHagan/NNB-E-Commerce-Website/blob/master/README-ASSETS/wireframes.pdf)
 
 ## Features
 
