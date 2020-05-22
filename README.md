@@ -87,6 +87,79 @@ Project Showcase
 
 ## Deployment
 
+I took the following steps to deploy the project successfully to Heroku.
+### Deploying by connecting Github to Heroku
+
+1. Up to the top right of the screen I clicked the "New" Dropdown button and then clicked the dropdown and selected "Create new app".
+2. I called the app "nnb-store" and set the region to "Europe".
+3. Once my app was created, I chose my deployment method which was "Connect to GitHub".
+4. After logging and authenticating my GitHub account, I typed the repository name in to the search bar in the "Connect to GitHub" section and searched for "NNB-E-Commerce-Website".
+5. When the repository appeared, I clicked the "Connect Button"
+6. Once connected, I selected my master branch in the "Automatic deploys" section and clicked "Enable Automatic Deploys" button to ensure that every time I push to GitHub the app is rebuilt and is always up to date with the latest code.
+7. Afterwards I went back to my Gitpod workspace and in my CLI I created a requirements.txt so Heroku knows what dependecies need to be installed for the application to run by running the following command. `pip3 freeze > requirements.txt`.
+8. I then created a Procfile which Heroku also requires by running the following command. `echo web: gunicorn nnb_store.wsgi:application > Procfile`.
+9. I then went through the standard process of pushing these files to Github, which Heroku recognised and rebuilt the app.
+
+Alternatively I could have connected my application through Heroku CLI
+### Deploying using Heroku CLI
+
+1. Up to the top right of the screen I would click the "New" Dropdown button and then click the dropdown and select "Create new app".
+2. I would then call the app "covid-companion" and set the region to "Europe".
+3. Once my app was created, I would chose my deployment method which would be "Use Heroku CLI".
+4. Next I would go to my Gitpod workspace and in my CLI I would login in to Heroku using the following command. `heroku login -i`.
+5. I would then go back to my Application dashboard and in the settings section I would take the "Heroku git URL" in "App Information".
+6. Back in my Gitpod workspace, I would link my repository to Heroku using the following command. `git remote add heroku https://git.heroku.com/nnb-store.git`.
+7. I would then create a requirements.txt so Heroku knows what dependecies need to be installed for the application to run by running the following command. `pip3 freeze > requirements.txt`.
+8. I would then create a Procfile which Heroku also requires by running the following command. `echo web: gunicorn nnb_store.wsgi:application > Procfile`.
+9. Lastly, I would push my application to Heroku which I will have to do manually each time using the following command. `git push heroku -u master`.
+
+### Setting Up Heroku Enviroment Variables
+
+1. In the application dashboard, navigate up the top of the screen and click the "Settings" button in the navigation menu.
+2. In the "Config Vars" section, click "Reveal Config Vars" which is where I added my enviroment variables.
+3. I then set all the enviroment variables up by adding the variable name to the "KEY" field and the variable value to the "VALUE" field and clicking the "Add" button.
+```
+    AWS_ACCESS_KEY_ID = '...'
+    AWS_SECRET_ACCESS_KEY = '...'
+    AWS_STORAGE_BUCKET_NAME = '...'
+    DATABASE_URL = '...'
+    EMAIL_HOST_PASS = '...'
+    EMAIL_HOST_USER = '...'
+    SECRET_KEY = '...'
+    STRIPE_PUBLIC_KEY = '...'
+    STRIPE_SECRET_KEY = '...'
+    STRIPE_WH_SECRET = '...'
+    USE_AWS = '...'
+```
+
+### Setting up AWS Bucket and Linking to Project
+1. In the AWS Control Panel I created an S3 Bucket
+2. I installed Django Storages using the command `pip3 install django-storages`
+2. AWS was linked to the project in settings.py from line 173 to line 195
+
+### Making a Local Clone
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/LouieOHagan/NNB-E-Commerce-Website)
+2. Under the repository name, click "Clone or download".
+3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
+4. Open Git Bash
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type ```git clone```, and then paste the URL you copied in Step 3.
+```
+$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+```
+7. Press Enter. Your local clone will be created.
+```
+$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+> Cloning into `Spoon-Knife`...
+> remote: Counting objects: 10, done.
+> remote: Compressing objects: 100% (8/8), done.
+> remove: Total 10 (delta 1), reused 10 (delta 1)
+> Unpacking objects: 100% (10/10), done.
+```
+Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to retrieve pictures for some of the buttons and more detailed explanations of the above process.
+
+
 ## Credits
 
 ### Code
