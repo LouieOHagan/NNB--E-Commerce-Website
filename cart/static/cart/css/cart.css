@@ -192,6 +192,10 @@
     .main-cart {
         margin-bottom: 7rem;
     }
+
+    .empty-cart {
+        text-align: center;
+    }
 }
 
 /* Active for screen sizes under 576px */

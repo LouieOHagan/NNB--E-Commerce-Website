@@ -107,10 +107,10 @@
             <p class="cart-total"><strong>Cart Total:</strong> &euro;{{ total }}</p>
             <p class="deliv-total"><strong>Delivery Cost:</strong> &euro;{{ delivery_cost|floatformat:2 }}</p>
             <p class="total-bottom"><strong>Grand Total:</strong> &euro;{{ grand_total|floatformat:2 }}</p>
-            <hr>
             {% if for_free_delivery %}
-                <p>Free Delivery if you spend <strong>{{ for_free_delivery }}</strong> more</p>
+                <p>Free Delivery if you spend <strong>&euro;{{ for_free_delivery }}</strong> more</p>
             {% endif %}
+            <hr>
         </div>
         <!-- / .Fixed Order Summary Section -->
 

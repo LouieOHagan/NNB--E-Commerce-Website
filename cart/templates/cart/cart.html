@@ -102,7 +102,7 @@
                 <!-- / .Cart Items -->
 
             {% else %}
-                <p>Your cart is currently empty</p>
+                <p class="empty-cart">Your cart is currently empty</p>
             {% endif %}
             <!-- / .Cart Items Section -->
 
@@ -118,7 +118,7 @@
             <p class="grand-total"><strong>Grand Total:</strong> &euro;{{ grand_total|floatformat:2 }}</p>
             
             {% if for_free_delivery %}
-                <p>Free Delivery if you spend <strong>{{ for_free_delivery }}</strong> more</p>
+                <p>Free Delivery if you spend <strong>&euro;{{ for_free_delivery }}</strong> more</p>
             {% endif %}
             
             <div class="direction-buttons">

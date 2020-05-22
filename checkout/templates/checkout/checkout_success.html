@@ -2,16 +2,28 @@
 {% load static %}
 {% load cart_tools %}
 
-{% block title %}Checkout | NNB {% endblock %}
+{% block title %}Order Successful - {{ order.full_name }}'s Order | NNB {% endblock %}
 
 {% block extra_css %}
-    <!-- Custom Checkotu Page CSS -->
+    <!-- Custom Cart Page CSS -->
+    <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+    <!-- Custom Checkout Page CSS -->
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
 {% endblock %}
 
 {% block content %}
-    <h1>Your order was successful</h1>
+<div class="container-fluid push-down">
+    <div class="row">
+        <div class="col-12 col-md-10 m-auto success-sect">
+            <i class="fas fa-check-circle success-tick mb-3"></i>
+            <h1 class="text-center mb-3">Order Successful!</h1>
+            <p class="text-center mb-3">We've recieved your order and are working to get it out to you as fast as we can.</p>
+            <p class="text-center mb-3">We've sent a confirmation email along with your order detials to <strong>{{ order.email_address }}</strong>.</p>
+            <p class="text-center mb-3">Your order number is <strong>{{ order.order_number }}</strong>.</p>
+            <a href="{% url 'home' %}" class="btn redirect-btn mt-2">KEEP BROWSING</a>
+        </div>
+    </div>
+</div>
 
-    <p class="text-black">Your order information is below. A confirmation email will be sent to <strong>{{ order.email_address }}</strong>.</p>
 
 {% endblock %}
