@@ -11,14 +11,30 @@ tablets, laptops and mobile phones. There will also be a search bar with search 
 
 - ### User stories
 
-- ### Design
-    - #### Colour Scheme
+- ### Design    
+    - Home page
+        - Landing page part inspired by Teslas website
+            - Kept background simple and plain rather than anything fancy that took away from focus which is highlighting the products which explained to the user instantly what type of site it is.
+        - Navigation bar inspired by Teslas website
+        - Search bar sliding out inspired by Apples website.
 
-    - #### Typography
+    - Login/SignUp Page
+        - No navigation bar or footer
+        - Single page with no movement available so no distractions
+        - User can only login or signup but are also given back button so they arent 'trapped'
 
-    - #### Imagery
+    - Product Detail Page
+        - Inspired by Bonfire eccomerce shop ref Product Detail Page in folder
+        - Buttons made green
+            - Found this article and 21% are green for electronics
+            - https://amasty.com/blog/best-color-add-cart-buy-button/
+        - Rest of site is simple, white/black/grey so green stands out as is big call to action for attracting users to add items to cart and buy
+        - Colour used #35a65b and hover colour is #488c5f as it is monochromatic according to sessions.edu
+            - Used this link https://www.sessions.edu/color-calculator/
+
 
 * ### Wireframes
+    - All Wireframes in PDF Format can be found [here](https://github.com/LouieOHagan/NNB-E-Commerce-Website/blob/master/README-ASSETS/wireframes.pdf)
 
 ## Features
 

@@ -4,16 +4,17 @@
 
 ## Testing
 
-The W3C Markup Validator was used to validate all pages on the website using "Validate by URI" to avoid syntax errors being shown as a result of Jinja and extending the base.html file. 
-The W3C CSS Validator Services was used to validate the CSS within the style.css file.
-JSHint was used to validate the Javascript code used in the project by directly inputting the code to JSHint.
-PEP8 Online was used to ensure that the python code written in the app.py file met PEP8 requirements.
-- [W3C Markup Validator](https://validator.w3.org/#validate_by_uri) - [Results](https://github.com/LouieOHagan/Covid-Companion-Website/blob/master/readMe-assets/w3c-html-validator.png)
-- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](https://github.com/LouieOHagan/Covid-Companion-Website/blob/master/readMe-assets/w3c-css-check.PNG)
-- [JSHint](https://jshint.com/) - [Results](https://github.com/LouieOHagan/Covid-Companion-Website/blob/master/readMe-assets/jshint-javascript-check.PNG)
-    - Note: warning of "one unused variable" appearing however the function is being called inside of the get-help.html using an onclick atrribute hence the flag. 
-- [PEP8 Online](http://pep8online.com/)- [Results](https://github.com/LouieOHagan/Covid-Companion-Website/blob/master/readMe-assets/pep8-python-check.PNG)
+### Testing Accounts
 
+#### Normal User Account
+    - Login Details:
+        - Email Address: test-user@nnb.ie
+        - Password: dodger2020
+
+#### Super User Account Details
+    - Login Details:
+        - Email Address: test-superuser@nnb.ie
+        - Password: dodger2020
 
 ### Automated Testing
 I conducted automated testing using Djangos built in TestCase on all 4 of my custom apps.
@@ -32,7 +33,7 @@ Coverage was used to generate a report of the tests which achieved the following
     - 82% test coverage, 716 statements overall, tested 590 statements, 126 statements missed
 	- Last Updated 2:41pm on 22/5/2020
 
-- Overall Coverage GIF can be found [Here]()
+- Overall Coverage GIF can be found [Here](https://github.com/LouieOHagan/NNB-E-Commerce-Website/blob/master/README-ASSETS/test-coverage-gif.gif)
 
 
 ### Further Testing
