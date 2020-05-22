@@ -152,7 +152,8 @@
         background: #ebebeb;
         position: fixed;
         bottom: 0;
-        height: 10vh;
+        height: 100px;
+        min-height: 100px;
     }
 
     .summary-heading,
@@ -167,7 +168,7 @@
     }
 
     .direction-buttons {
-        bottom: 10px;
+        bottom: 18px;
         right: 0;
         width: 100%;
         flex-direction: row;
