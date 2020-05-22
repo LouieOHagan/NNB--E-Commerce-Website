@@ -142,6 +142,24 @@
             </nav>
         </div>
         
+        {% if messages %}
+            <div class="message-container">
+                {% for message in messages %}
+                    {% with message.level as level %}
+                        {% if level == 40 %}
+                            {% include 'includes/toasts/toast_error.html' %}
+                        {% elif level == 30 %}
+                            {% include 'includes/toasts/toast_warning.html' %}
+                        {% elif level == 25 %}
+                            {% include 'includes/toasts/toast_success.html' %}
+                        {% else %}
+                            {% include 'includes/toasts/toast_info.html' %}
+                        {% endif %}
+                    {% endwith %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
         {% block content %} {% endblock %}
 
         <!-- JavaScript Links Placed at bottom to increase page load times-->
@@ -158,6 +176,10 @@
         <script src="https://js.stripe.com/v3/"></script>
         <!-- Custom JS -->
         <script src="{% static 'js/main.js' %}"></script>
+        <!-- Toasts JS Code -->
+        <script type="text/javascript">
+            $('.toast').toast('show');
+        </script>
         {% endblock %} 
         
         {% block extra_javascript %} {% endblock %}
