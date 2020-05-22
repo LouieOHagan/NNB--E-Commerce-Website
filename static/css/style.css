@@ -268,6 +268,70 @@ ul {
     height: 2px;
 }
 
+/* Allauth forms */
+
+.background {
+    background: url(/media/laptops.jpg) center center;
+    background-size: cover;
+    height: calc(100vh - 67px);
+}
+
+.allauth-form-styles {
+    background: white;
+    margin-top: 45px;
+    width: 100%;
+    padding: 40px 20px;
+    border-radius: 20px;
+}
+
+.allauth-form-styles h1 {
+    text-align: center;
+}
+
+.allauth-form-styles p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.allauth-form-styles form button {
+    text-align: center;
+}
+
+.allauth-form-styles button,
+.allauth-form-styles input[type='submit'] {
+	/* Bootstrap Btn Styles */
+	display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #000;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    /* Custom Styles */
+    background: #35A65B;
+    color: #fafafa;
+    border: 1px solid #35A65B;
+    width: 180px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 9px 12px;
+    margin: 20px 0;
+}
+
+.allauth-form-styles button:hover,
+.allauth-form-styles input[type='submit']:hover {
+    background: #488c5f;
+    border: 1px solid #488c5f;
+    color: #fafafa;
+}
+
+
 /* --------------------------Media Query */
 
 /* Active for screen sizes under 992px */
