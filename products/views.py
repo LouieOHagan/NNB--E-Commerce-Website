@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.db.models import Q, Avg
 from django.db.models.functions import Lower
+from django.contrib import messages
 
 from .models import Product, ProductType, ProductReview
 from .forms import ReviewForm
@@ -43,6 +44,10 @@ def display_products(request):
 
         if 'q' in request.GET:
             query = request.GET['q']
+            if not query:
+                messages.error(request, ('Please specify a name, code or description of \
+                a product so that we can assist you in finding it!'))
+                return redirect(reverse('home'))
             query_results = Q(name__icontains=query) | \
                 Q(product_code__exact=query) | \
                 Q(product_description__icontains=query)
@@ -100,6 +105,8 @@ def add_review(request, product_id):
                 data.title = request.POST['title']
                 data.product_review = request.POST['product_review']
                 data.save()
+                messages.success(request, f'Your review was successfully \
+                    added to {product.name}')
                 return redirect('indiv_products', product_id)
         else:
             form = ProductReview()
@@ -109,6 +116,7 @@ def add_review(request, product_id):
         }
         return redirect('indiv_products', context)
     else:
+        messages.error(request, f'You must be logged in to add a review!')
         return redirect('account_login')
 
 
@@ -123,6 +131,8 @@ def edit_review(request, product_id, review_id):
                 if form.is_valid():
                     data = form.save(commit=False)
                     data.save()
+                    messages.success(request, f'Your review for the {product.name} \
+                        was successfully updated')
                     return redirect('indiv_products', product_id)
             else:
                 form = ReviewForm(instance=review)
@@ -133,8 +143,14 @@ def edit_review(request, product_id, review_id):
             }
             return render(request, 'products/edit_review.html', context)
         else:
+            messages.error(request, (f'Access Denied: you do not have permission \
+                to modify another users review. Please login in order to \
+                create your own review'))
             return redirect('indiv_products', product_id)
     else:
+        messages.error(request, f'Access Denied: you do not have permission \
+            to modify another users review. Please login in order to \
+            create your own review')
         return redirect('account_login')
 
 
@@ -145,6 +161,17 @@ def delete_review(request, product_id, review_id):
 
         if request.user == review.user:
             review.delete()
+            messages.success(request, f'Your review for the {product.name} was \
+                successfully deleted')
+        else:
+            messages.error(request, (f'Access Denied: you do not have permission \
+                to modify another users review. Please login in order to \
+                create your own review'))
+            return redirect('indiv_products', product_id)
+
         return redirect('indiv_products', product_id)
     else:
+        messages.error(request, f'Access Denied: you do not have permission \
+            to modify another users review. Please login in order to create \
+            your own review')
         return redirect('account_login')

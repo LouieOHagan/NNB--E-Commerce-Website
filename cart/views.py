@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 
 from products.models import Product
@@ -18,7 +18,7 @@ def add_to_cart(request, item_id):
     ensures they are redirected to that items page
     """
 
-    product = Product.objects.get(pk=item_id)
+    product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
 
@@ -26,6 +26,8 @@ def add_to_cart(request, item_id):
 
     if item_id in list(cart.keys()):
         cart[item_id] += quantity
+        messages.success(request, f'Updated quantity of {product.name} \
+            to {cart[item_id]}')
     else:
         cart[item_id] = quantity
         messages.success(request, f'Added {product.name} to your cart!')
@@ -41,14 +43,18 @@ def update_cart(request, item_id):
     the quantity from 1 - 49
     """
 
+    product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
 
     cart = request.session.get('cart', {})
 
     if quantity > 0:
         cart[item_id] = quantity
+        messages.success(request, f'Updated quantity of {product.name} \
+            to {cart[item_id]}')
     else:
         cart.pop(item_id)
+        messages.success(request, f'Removed {product.name} from your cart')
 
     request.session['cart'] = cart
 
@@ -58,9 +64,11 @@ def update_cart(request, item_id):
 def remove_cart_item(request, item_id):
     """ remove_cart_item view is used to remove an item from the users cart """
 
+    product = get_object_or_404(Product, pk=item_id)
     cart = request.session.get('cart', {})
 
     cart.pop(item_id)
+    messages.success(request, f'Removed {product.name} from your cart')
 
     request.session['cart'] = cart
 
