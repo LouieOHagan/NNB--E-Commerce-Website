@@ -90,7 +90,20 @@ Project Showcase
 ## Credits
 
 ### Code
+- [W3Schools](https://www.w3schools.com/howto/howto_js_tab_img_gallery.asp) for tutorial on creating image gallery and javascript function for changing the images 
+- [Chris Zielinksi](https://github.com/ckz8780) for inspiration/tutorials for the Stripe checkout app & sorting by categories and query/search functionality.
+- Large Screen Devices home page image slider inspired by Tesla and video tutorial on make a slider like Teslas by [Online Tutorials](https://www.youtube.com/watch?v=Rn5HeWbFNOc&list=PLo8KGgXM7VLl3nZLjnDfBchtWEWkuX3Uz&index=28&t=0s) 
 
 ### Content
+- Smashing Magazine for information on Thumb zone design was found [here](https://www.smashingmagazine.com/2016/09/the-thumb-zone-designing-for-mobile-users/)
+
+### Media
+- [Pixabay](https://pixabay.com/): Some stock background images were obtained from Pixabay.
+- [Google Images](https://www.google.com/imghp?hl=en): The remainding images were obtained from Google Images.
 
 ### Acknowledgements
+- My Mentor Adegbenga Adeye for continuous helpful feedback and ideas to improve both myself as a developer and my project.
+
+- Kevin Loughrey and Xavier Astor for continuous assistance with technical issues and project feedback day in, day out 
+
+- Chris Zielinksi for the support while learning Django and for continuous assistance with technical issues during the development of the project.
