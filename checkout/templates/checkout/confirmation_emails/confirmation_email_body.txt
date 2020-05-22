@@ -1,0 +1,20 @@
+Hello {{ order.full_name }}
+
+We're exicited to have recieved an order from you!
+This is a simple confirmation email with your order details attached below. If there's any mistakes or you arent happy with anything, please dont hesistate to reach out to us. You can contact us at hello-nnb@gmail.com or support-nnb@gmail.com
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.order_date }}
+
+Order Total: {{ order.total }}
+Delivery Cost: {{ order.delivery_cost }}
+Grand Total: {{ order.grand_total }}
+
+Your order will be shipped to {{ order.street_address1 }} in {{ order.town_or_city }}, {{ order.country }}.
+
+
+Thank you for your order, we cant wait for your return!
+
+Sincerly,
+
+The Team at NNB
