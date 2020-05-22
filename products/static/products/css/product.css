@@ -265,6 +265,17 @@
 /* --------------------------Media Query */
 
 /* Active for screen sizes under 992px */
+@media (min-width: 992px) {
+    .product-card {
+        height: 400px;
+        width: 270px;
+        margin: 0 auto 50px;
+    }
+
+
+}
+
+/* Active for screen sizes under 992px */
 @media (max-width: 992px) {
     #expandedImg {
         height: 375px;
@@ -277,6 +288,11 @@
     .column {
         width: 19%;
     }
+
+    .product-image img {
+        width: 298px;
+        height: 298px;;
+    }    
 
 }
 
@@ -317,6 +333,15 @@
     .review-row {
         margin-bottom: 8rem!important;
     }
+
+    .product-top-sect {
+        flex-direction: column;
+    }
+
+    .product-top-sect ol,
+    .sort-by-btn {
+        margin-left: 0;
+    }
 }
 
 /* Active for screen sizes under 576px */
@@ -337,6 +362,21 @@
     #expandedImg {
         height: 200px;
     }
+
+    .product-card {
+        height: 390px;
+        width: 260px;
+    }
+
+    .product-image img {
+        width: 258px;
+        height: 258px;
+    }
+
+    .current-price {
+        font-size: 18px;
+    }
+
 }
 
 
