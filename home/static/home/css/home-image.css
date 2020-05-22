@@ -36,7 +36,15 @@
   font-size: 6em;
   line-height: 0.8em;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  color: #fff;
 }
+
+.text-slide h2:hover,
+.slider-txt:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
 
 .slider input[type="radio"].radio1:checked ~ .text1 {
     display: block;

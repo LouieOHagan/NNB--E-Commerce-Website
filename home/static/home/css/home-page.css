@@ -1,0 +1,38 @@
+.home-cat-image {
+    height: 33vh;
+}
+
+.cat-laptops {
+    background: url('/media/laptops.jpg') center center;
+    background-size: cover;
+    border-bottom: 2px solid #fff;
+}
+
+.cat-tablets {
+    background: url('/media/tablets.jpg') center center;
+    background-size: cover;
+    border-bottom: 2px solid #fff;
+}
+
+.cat-mobiles {
+    background: url('/media/mobiles.jpg') center center;
+    background-size: cover;
+    border-bottom: 2px solid #fff;
+}
+
+.home-cat-image h1 {
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+    text-transform: uppercase;
+}
+
+.home-cat-image h1:hover,
+.a-category:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.slider-txt {
+    color: #fff;
+}

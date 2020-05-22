@@ -4,27 +4,78 @@
 {% block title %}NNB | Home Page{% endblock %}
 
 {% block extra_css %} 
+    <!-- Home Page Slider Custom CSS -->
     <link rel="stylesheet" href="{% static 'home/css/home-image.css' %}">
+    <!-- Home Page Custom CSS -->
+    <link rel="stylesheet" href="{% static 'home/css/home-page.css' %}">
 {% endblock %}
 
-    {% block content %}
-        <div class="container-fluid no-gutters home-image-sect">
-            <section class="slider">
-                <input type="radio" name="slide" id="" class="radio1 custom-btn">
-                <input type="radio" name="slide" id="" class="radio2" checked>
-                <input type="radio" name="slide" id="" class="radio3">
-                <div class="text-slide text1">
-                    <h2>Mobiles</h2>
-                </div>
+{% block content %}
+    <!-- Sliding Home Image -->
+    <div class="d-none d-lg-flex container-fluid no-gutters home-image-sect">
+        <section class="slider">
+            <input type="radio" name="slide" id="" class="radio1 custom-btn">
+            <input type="radio" name="slide" id="" class="radio2" checked>
+            <input type="radio" name="slide" id="" class="radio3">
 
-                <div class="text-slide text2">
-                    <h2>Laptops</h2>
-                </div>
+            <!-- Mobiles -->
+            <div class="text-slide text1">
+                <a class="slider-txt" href="{% url 'display_products' %}?product_type=mobiles">
+                    <h2>View Mobiles</h2>
+                </a>
+            </div>
 
-                <div class="text-slide text3">
-                    <h2>Tablets</h2>
+            <!-- Laptops -->
+            <div class="text-slide text2">
+                
+                <a class="slider-txt" href="{% url 'display_products' %}?product_type=laptops">
+                    <h2>View Laptops</h2>
+                </a>
+            </div>
+            
+            <!-- Tablets -->
+            <div class="text-slide text3">
+                <a class="slider-txt" href="{% url 'display_products' %}?product_type=tablets">
+                    <h2>View Tablets</h2>
+                </a>
+            </div>
+
+            <div class="slide"></div>
+        </section>
+    </div>
+    <!-- / .Sliding Home Image -->
+
+    <!-- Large > Sized Devices Categories  -->
+    <div class="d-block d-lg-none container-fluid push-down">
+        <div class="row">
+            <!-- Laptops -->
+            <a class="w-100 a-category" href="{% url 'display_products' %}?product_type=laptops">
+                <div class="col-12 p-0 m-0">
+                    <div class="home-cat-image cat-laptops">
+                        <h1>View Laptops</h1>
+                    </div>
                 </div>
-                <div class="slide"></div>
-            </section>
+            </a>
+
+            <!-- Tablets -->
+            <a class="w-100 a-category" href="{% url 'display_products' %}?product_type=tablets">
+                <div class="col-12 p-0 m-0">
+                    <div class="home-cat-image cat-tablets">
+                        <h1>View Tablets</h1>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mobiles -->
+            <a class="w-100 a-category" href="{% url 'display_products' %}?product_type=mobiles">
+                <div class="col-12 p-0 m-0">
+                    <div class="home-cat-image cat-mobiles">
+                        <h1>View Mobiles</h1>
+                    </div>
+                </div>
+            </a>
         </div>
-    {% endblock %}
+    </div>
+    <!-- / .Large > Sized Devices Categories  -->
+
+{% endblock %}
