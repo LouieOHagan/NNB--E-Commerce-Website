@@ -1,3 +1,5 @@
+venv/
+.vscode
 *.sqlite3
 *.pyc
 __pycache__
@@ -8,3 +10,4 @@ htmlcov/
 .gitpod.dockerfile
 .gitpod.yml
 *core.Microsoft*
+static_root/
