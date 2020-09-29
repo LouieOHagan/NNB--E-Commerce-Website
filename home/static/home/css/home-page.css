@@ -37,3 +37,104 @@
 .slider-txt {
     color: #fff;
 }
+
+.hero-carousel-section {
+    width: 93%;
+    margin: 90px auto 0;
+}
+
+.hero-carousel-main {
+    height: 450px;
+    border-radius: 5px;
+}
+
+.carousel-image {
+    background-size: cover;
+    height: 450px;
+    border-radius: 5px;
+}
+
+#carousel-image-1 {
+    background: url(/media/laptops.jpg) center center;
+}
+
+#carousel-image-2 {
+    background: url(/media/mobiles.jpg) center center;
+}
+
+#carousel-image-3 {
+    background: url(/media/tablets.jpg) center center;
+}
+
+.carousel-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.carousel-arrow-next,
+.carousel-arrow-prev {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    transition: opacity .15s ease;
+}
+
+.carousel-arrow-next {
+    right: -20px;
+}
+
+.carousel-arrow-prev {
+    left: -20px;
+}
+
+.carousel-arrow-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 20px;
+    height: 20px;
+    font-size: 18px;
+}
+
+
+@media (max-width: 992px) {
+    .hero-carousel-main {
+        height: 400px;
+    }
+    
+    .carousel-image {
+        height: 400px;
+    }
+}
+
+@media (max-width: 767px) {
+
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 350px) {
+    .hero-carousel-main {
+        height: 350px;
+    }
+    
+    .carousel-image {
+        height: 350px;
+    }
+}

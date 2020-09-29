@@ -11,71 +11,26 @@
 {% endblock %}
 
 {% block content %}
-    <!-- Sliding Home Image -->
-    <div class="d-none d-lg-flex container-fluid no-gutters home-image-sect">
-        <section class="slider">
-            <input type="radio" name="slide" id="" class="radio1 custom-btn">
-            <input type="radio" name="slide" id="" class="radio2" checked>
-            <input type="radio" name="slide" id="" class="radio3">
+    
+    <div id="carouselExampleControls" class="carousel slide hero-carousel-section" data-ride="carousel">
+        <div class="carousel-inner hero-carousel-main">
+            <div id="carousel-image-1" class="carousel-item active carousel-image"></div>
+            <div id="carousel-image-2" class="carousel-item carousel-image"></div>
+            <div id="carousel-image-3" class="carousel-item carousel-image"></div>
+        </div>
 
-            <!-- Mobiles -->
-            <div class="text-slide text1">
-                <a class="slider-txt" href="{% url 'display_products' %}?product_type=mobiles">
-                    <h2>View Mobiles</h2>
-                </a>
-            </div>
-
-            <!-- Laptops -->
-            <div class="text-slide text2">
-                
-                <a class="slider-txt" href="{% url 'display_products' %}?product_type=laptops">
-                    <h2>View Laptops</h2>
-                </a>
-            </div>
-            
-            <!-- Tablets -->
-            <div class="text-slide text3">
-                <a class="slider-txt" href="{% url 'display_products' %}?product_type=tablets">
-                    <h2>View Tablets</h2>
-                </a>
-            </div>
-
-            <div class="slide"></div>
-        </section>
-    </div>
-    <!-- / .Sliding Home Image -->
-
-    <!-- Large > Sized Devices Categories  -->
-    <div class="d-block d-lg-none container-fluid push-down">
-        <div class="row">
-            <!-- Laptops -->
-            <a class="w-100 a-category" href="{% url 'display_products' %}?product_type=laptops">
-                <div class="col-12 p-0 m-0">
-                    <div class="home-cat-image cat-laptops">
-                        <h1>View Laptops</h1>
-                    </div>
-                </div>
+        <div class="carousel-arrow-prev">
+            <a class="carousel-arrow" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-arrow-icon" aria-hidden="true"><i class="fas fa-chevron-left"></i></span>
+                <span class="sr-only">Previous</span>
             </a>
+        </div>
 
-            <!-- Tablets -->
-            <a class="w-100 a-category" href="{% url 'display_products' %}?product_type=tablets">
-                <div class="col-12 p-0 m-0">
-                    <div class="home-cat-image cat-tablets">
-                        <h1>View Tablets</h1>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Mobiles -->
-            <a class="w-100 a-category" href="{% url 'display_products' %}?product_type=mobiles">
-                <div class="col-12 p-0 m-0">
-                    <div class="home-cat-image cat-mobiles">
-                        <h1>View Mobiles</h1>
-                    </div>
-                </div>
+        <div class="carousel-arrow-next">
+            <a class="carousel-arrow" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-arrow-icon" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+                <span class="sr-only">Next</span>
             </a>
         </div>
     </div>
-    <!-- / .Large > Sized Devices Categories  -->
-
 {% endblock %}
