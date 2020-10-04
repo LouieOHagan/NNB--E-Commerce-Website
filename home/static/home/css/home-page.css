@@ -1,42 +1,4 @@
 /* --- Home Page */
-.home-cat-image {
-    height: 33vh;
-}
-
-.cat-laptops {
-    background: url('/media/laptops.jpg') center center;
-    background-size: cover;
-    border-bottom: 2px solid #fff;
-}
-
-.cat-tablets {
-    background: url('/media/tablets.jpg') center center;
-    background-size: cover;
-    border-bottom: 2px solid #fff;
-}
-
-.cat-mobiles {
-    background: url('/media/mobiles.jpg') center center;
-    background-size: cover;
-    border-bottom: 2px solid #fff;
-}
-
-.home-cat-image h1 {
-    color: white;
-    text-align: center;
-    padding-top: 50px;
-    text-transform: uppercase;
-}
-
-.home-cat-image h1:hover,
-.a-category:hover {
-    text-decoration: none;
-    color: white;
-}
-
-.slider-txt {
-    color: #fff;
-}
 
 .hero-carousel-section {
     width: 93%;
@@ -66,13 +28,32 @@
     background: url(/media/tablets.jpg) center center;
 }
 
-.carousel-arrow {
+.carousel-arrow-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #000;
+    background: #f7f7f7;
+    color: #000;
     padding: 10px;
     border-radius: 3px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .8);
+    transition: all ease-in-out 0.3s;
+}
+
+.carousel-arrow-btn:hover {
+    text-decoration: none;
+    color: #f7f7f7;
+    background: #000;
+    transition: all ease-in-out 0.3s;
+}
+
+.carousel-arrow-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    font-size: 18px;
 }
 
 .carousel-arrow-next,
@@ -87,7 +68,7 @@
     align-items: center;
     -ms-flex-pack: center;
     justify-content: center;
-    color: #fff;
+    color: #000;
     text-align: center;
     transition: opacity .15s ease;
 }
@@ -100,14 +81,19 @@
     left: -20px;
 }
 
-.carousel-arrow-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    width: 20px;
-    height: 20px;
-    font-size: 18px;
+.ad-row {
+    width: 93%;
+    margin: auto;
+}
+
+.green {
+    height: 100px;
+    background: green;
+}
+
+.red {
+    height: 100px;
+    background: red;
 }
 
 
