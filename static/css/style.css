@@ -27,7 +27,7 @@ ul {
 /* -------------------------------- Navigation Bar */
 
 .navigation-colour {
-    background: rgba(255, 255, 255, 0.96);
+    background: #fff;
     width: 100%;
     border-bottom: 2px solid rgba(226, 226, 226, 0.863);
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
