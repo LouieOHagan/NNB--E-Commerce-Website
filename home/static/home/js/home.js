@@ -1,27 +1,18 @@
 // Mouse Enter/Leave Event Listeners for Ad One
-document.querySelector('.ad-one').addEventListener("mouseover", imageHover.bind(this, "adOne"));
-document.querySelector('.ad-one').addEventListener("mouseleave", imageLeave.bind(this, "adOne"));
+document.querySelector('.ad-one').addEventListener("mouseover", imageHover.bind(this, "one"));
+document.querySelector('.ad-one').addEventListener("mouseleave", imageLeave.bind(this, "one"));
 // Mouse Enter/Leave Event Listeners for Ad Two
-document.querySelector('.ad-two').addEventListener("mouseover", imageHover.bind(this, "adTwo"));
-document.querySelector('.ad-two').addEventListener("mouseleave", imageLeave.bind(this, "adTwo"));
+document.querySelector('.ad-two').addEventListener("mouseover", imageHover.bind(this, "two"));
+document.querySelector('.ad-two').addEventListener("mouseleave", imageLeave.bind(this, "two"));
 
-let adImage = document.querySelector('.ad-one-image');
-let adImageTwo = document.querySelector('.ad-two-image');
-
-// Adds ad-image-hover class when mouse is hovered over card
+// Adds ad-image-hover class to respective card image when mouse is hovered over card.
 function imageHover(adNumber) {
-    if(adNumber === "adOne") {
-        adImage.classList.add("ad-image-hover");
-    } else {
-        adImageTwo.classList.add("ad-image-hover");
-    }
-};
+    let image = document.querySelector(`.ad-${adNumber}-image`);
+    image.classList.add("ad-image-hover");
+}
 
-// Removes ad-image-hover class when mouse leaves/is no longer hovering over card
+// Removes ad-image-hover class to respective card image when mouse leaves/is no longer hovering over card.
 function imageLeave(adNumber) {
-    if(adNumber === "adOne") {
-        adImage.classList.remove("ad-image-hover");
-    } else {
-        adImageTwo.classList.remove("ad-image-hover");
-    }
-};
+    let image = document.querySelector(`.ad-${adNumber}-image`);
+    image.classList.remove("ad-image-hover");
+}
