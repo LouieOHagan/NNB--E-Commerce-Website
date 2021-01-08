@@ -36,14 +36,22 @@
 
 
     <div class="ad-row">
-        <a class="ad-one" href="{% url 'display_products' %}?product_type=mobiles">
-            <h2 class="ad-text">Mobile Phones</h2>
+        <div class="ad-one">
+            <div class="ad-cta-section">
+                <h2 class="ad-text">Mobile Phones</h2>
+                <a class="ad-button" href="{% url 'display_products' %}?product_type=mobiles">Shop Now</a>
+            </div>
+            
             <div class="ad-one-image"></div>
-        </a>
-        <a class="ad-two" href="{% url 'display_products' %}?product_type=accessories">
-            <h2 class="ad-text">Accessories</h2>
+        </div>
+        <div class="ad-two">
+            <div class="ad-cta-section">
+                <h2 class="ad-text">Accessories</h2>
+                <a class="ad-button" href="{% url 'display_products' %}?product_type=accessories">Shop Now</a>
+            </div>
+            
             <div class="ad-two-image"></div>
-        </a>
+        </div>
     </div>
 {% endblock %}
 
