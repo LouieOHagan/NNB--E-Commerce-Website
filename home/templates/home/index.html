@@ -14,9 +14,27 @@
     
     <div id="carouselExampleControls" class="carousel slide hero-carousel-section" data-ride="carousel">
         <div class="carousel-inner hero-carousel-main">
-            <div id="carousel-image-1" class="carousel-item active carousel-image"></div>
-            <div id="carousel-image-2" class="carousel-item carousel-image"></div>
-            <div id="carousel-image-3" class="carousel-item carousel-image"></div>
+            <div id="carousel-image-1" class="carousel-item active carousel-image">
+                <div class="carousel-cta-section">
+                    <h2 class="ad-text">Laptops</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    <a class="ad-button" href="{% url 'display_products' %}?product_type=laptops">Shop Now</a>
+                </div>
+            </div>
+            <div id="carousel-image-2" class="carousel-item carousel-image">
+                <div class="carousel-cta-section">
+                    <h2 class="ad-text">Mobile Phones</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    <a class="ad-button" href="{% url 'display_products' %}?product_type=mobiles">Shop Now</a>
+                </div>
+            </div>
+            <div id="carousel-image-3" class="carousel-item carousel-image">
+                <div class="carousel-cta-section">
+                    <h2 class="ad-text">Tablets</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    <a class="ad-button" href="{% url 'display_products' %}?product_type=tablets">Shop Now</a>
+                </div>
+            </div>
         </div>
 
         <div class="carousel-arrow-prev">
@@ -53,6 +71,42 @@
             <div class="ad-two-image"></div>
         </div>
     </div>
+
+    <!-- IGNORE - Temp Page Layout Indicator -->
+    <h1 style="text-align: center; color: red; margin: 30px auto; border: 1px solid red; padding: 5px; width: fit-content;">Product Carousel Section</h1>
+
+    <div class="ad-row info-row">
+        <div class="info-column">
+            <div class="info-card">
+                <img src="{{ MEDIA_URL }}free-shippingt-icon.png" alt="" />
+                <h3>Free Shipping</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, illo!</p>
+            </div>
+        </div>
+
+        <div class="info-column">
+            <div class="info-card">
+                <img src="{{ MEDIA_URL }}free-returns-icon.png" alt="" />
+                <h3>Free Returns</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, illo!</p>
+            </div>
+        </div>
+
+        <div class="info-column">
+            <div class="info-card">
+                <img src="{{ MEDIA_URL }}secure-payment-icon.png" alt="" />
+                <h3>Secure Payments</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, illo!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- IGNORE - Temp Page Layout Indicator -->
+    <h1 style="text-align: center; color: red; margin: 30px auto; border: 1px solid red; padding: 5px; width: fit-content;">Email Newsletter Section</h1>
+    
+    <!-- IGNORE - Temp Page Layout Indicator -->
+    <h1 style="text-align: center; color: red; margin: 30px auto; border: 1px solid red; padding: 5px; width: fit-content;">Footer Section</h1>
+
 {% endblock %}
 
 {% block extra_javascript %} 

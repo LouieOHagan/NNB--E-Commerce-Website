@@ -82,6 +82,22 @@
     left: -20px;
 }
 
+.carousel-cta-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+.carousel-cta-section h2 {
+    font-size: 50px;
+}
+
 .ad-row {
     width: 93%;
     margin: auto;
@@ -175,6 +191,52 @@
     transition: all 1.3s;
 }
 
+.info-row {
+    padding: 100px 0;
+}
+
+.info-column {
+    width: calc(((100% / 12) * 4) - 10px);
+    margin-right: 10px;
+    border-radius: 5px;
+    position: relative;
+    color: #000;
+    text-align: center;
+}
+
+.info-card {
+    padding: 20px 0;
+    color: black;
+    margin: auto;
+    transition: all 1s;
+    border-radius: 5px;
+}
+
+.info-card:hover {
+    box-shadow: 0px 0px 16px 1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 16px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 16px 1px rgba(0,0,0,0.75);
+    transition: all 1s;
+    transform: scale(1.01);
+}
+
+.info-card img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+
+.info-card h3 {
+    margin-top: 20px;
+}
+
+.info-card p {
+    width: 80%;
+    font-weight: 600;
+    display: block;
+    margin: auto;
+}
 
 @media (max-width: 992px) {
     .hero-carousel-main {
@@ -190,7 +252,8 @@
     }
 
     .ad-one,
-    .ad-two {
+    .ad-two,
+    .info-img {
         width: 100%;
         margin: 0;
         margin-bottom: 20px;
