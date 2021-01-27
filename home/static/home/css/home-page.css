@@ -1,5 +1,7 @@
 /* --- Home Page */
 
+/* Landing Page Carousel Section */
+
 .hero-carousel-section {
     width: 93%;
     /* 66px navbar & 20px added to keep 20px margin gap between everything on home page for uniformity */
@@ -98,6 +100,8 @@
     font-size: 50px;
 }
 
+/* Category Ad Section */
+
 .ad-row {
     width: 93%;
     margin: auto;
@@ -191,6 +195,8 @@
     transition: all 1.3s;
 }
 
+/* Company Information Section */
+
 .info-row {
     padding: 100px 0;
 }
@@ -236,6 +242,96 @@
     font-weight: 600;
     display: block;
     margin: auto;
+}
+
+/* Newsletter Section */
+
+.newsletter-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 93%;
+    height: 350px;
+    background: #000;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.left-text {
+    width: calc(((100% / 12) * 4));
+    margin: 0 auto;
+    text-align: left;
+    font-size: 36px;
+    font-weight: bold;
+    color: #f7f7f7;
+}
+
+.left-text p {
+    margin: auto;
+    display: block;
+}
+
+.right-form {
+    width: calc(((100% / 12) * 5));
+    margin: 0 auto;
+    text-align: right;
+}
+
+.newsletter-email {
+    min-height: 45px;
+    background: transparent;
+    border: 2px solid #f7f7f7;
+    color: #f7f7f7;
+    font-size: 17px;
+    padding: 5px;
+    width: calc(100% - 90px);
+    margin: 0;
+    transition: all ease-in-out 0.5s;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 10px;
+}
+
+.newsletter-email:focus {
+    outline: none;
+}
+
+.newsletter-btn {
+    width: 85px;
+    min-height: 45px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #f7f7f7;
+    transition: all ease-in-out 0.3s;
+    border: 2px solid #f7f7f7;
+    background: transparent;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    position: relative;
+    left: -6px;
+    padding: 10px;
+}
+
+.newsletter-btn:hover {
+    text-decoration: none;
+    background: #f7f7f7;
+    color: #000;
+    transition: all ease-in-out 0.3s;
+}
+
+.form-checkmarks {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.checkmark-item {
+    margin: 0 0 0 25px;
+    display: inline-block;
+    color: #f7f7f7;
+}
+
+.checkmark-icon {
+    margin-right: 5px;
 }
 
 @media (max-width: 992px) {
